@@ -6,15 +6,15 @@ public class Cliente {
     private int Cedula,celular;
     private LocalDate llegada,salida;
 
-    public Cliente(String Nombre, String Apellido, String genero, String correo, int Cedula, int celular, LocalDate llegada, LocalDate salida) {
+    public Cliente(String Nombre, String Apellido, String genero, String correo, int Cedula, int celular) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.genero = genero;
         this.correo = correo;
         this.Cedula = Cedula;
         this.celular = celular;
-        this.llegada = llegada;
-        this.salida = salida;
+        this.llegada = null;
+        this.salida = null;
     }
 
     public String getNombre() {
