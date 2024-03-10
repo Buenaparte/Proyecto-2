@@ -1,36 +1,36 @@
 package Clases;
 
-public class Nodo {
- private Cliente element;
- private Nodo leftSon, rightSon;
+public class NodoBst2 {
+ private Lista element;
+ private NodoBst2 leftSon, rightSon;
 
-    public Nodo(Cliente element) {
+    public NodoBst2(Lista element) {
         this.element = element;
         this.leftSon = null;
         this.rightSon = null;
     }
 
-    public Cliente getElement() {
+    public Lista getElement() {
         return element;
     }
 
-    public void setElement(Cliente element) {
+    public void setElement(Lista element) {
         this.element = element;
     }
 
-    public Nodo getLeftSon() {
+    public NodoBst2 getLeftSon() {
         return leftSon;
     }
 
-    public void setLeftSon(Nodo leftSon) {
+    public void setLeftSon(NodoBst2 leftSon) {
         this.leftSon = leftSon;
     }
 
-    public Nodo getRightSon() {
+    public NodoBst2 getRightSon() {
         return rightSon;
     }
 
-    public void setRightSon(Nodo rightSon) {
+    public void setRightSon(NodoBst2 rightSon) {
         this.rightSon = rightSon;
     }
     

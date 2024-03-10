@@ -4,11 +4,13 @@ public class Habitacion {
   private int numero;
   private int piso;
   private String tipo;
+  private Cliente cliente;
 
-    public Habitacion(int numero, int piso, String tipo) {
+    public Habitacion(int numero, int piso, String tipo, Cliente cliente) {
         this.numero = numero;
         this.piso = piso;
         this.tipo = tipo;
+        this.cliente = cliente;
     }
 
     public int getNumero() {
@@ -34,5 +36,13 @@ public class Habitacion {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-  
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
 }
