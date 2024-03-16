@@ -14,7 +14,7 @@ public class BST2 {
     public void setRoot(NodoBst2 root) {
         this.root = root;
     }
-        
+   //revisar codigo algo esta raro     
     public void insertLista(Lista element, NodoBst2 pointer) {
         NodoBst2 nodo = new NodoBst2(element);
         if (isEmpty()) {

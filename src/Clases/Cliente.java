@@ -90,5 +90,13 @@ public class Cliente {
         this.salida = salida;
     }
     
+    public void creacionfechasiniciales(int año, int mes, int dia){
+     LocalDate date = LocalDate.of(año, mes, dia);
+     setLlegada(date);
+    }
     
+     public void creacionfechasfinales(int año, int mes, int dia){
+     LocalDate date = LocalDate.of(año, mes, dia);
+     setSalida(date);
+    } 
 }

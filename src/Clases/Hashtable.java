@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Clases;
 
 public class Hashtable {
@@ -9,7 +6,7 @@ public class Hashtable {
  private Cliente cliente;
 
     public Hashtable() {
-        this.array = new Cliente [102];
+        this.array = new Cliente [1002];
         this.cliente = null;
     }
 
@@ -30,15 +27,12 @@ public class Hashtable {
     }
 
     public void Insert (Cliente cliente){
-       if(isEmpty()){
-          getArray()[0] = cliente; 
-       }else{
          if (searchSpace()== -1){
          Cliente[] array2 = copyArray();
          array2[array2.length-1] = cliente;
          setArray(array2);
          }else{
-          int index = Crearindex(cliente);
+          int index = Crearindex(cliente.getCedula());
           if (getArray()[index] == null){
            getArray()[index] = cliente;   
           }else{
@@ -46,18 +40,10 @@ public class Hashtable {
           }
          }             
         } 
-    }
      
-     public int Crearindex(Cliente cliente){
-         String nombre = cliente.getNombre();
-         int cedula = cliente.getCedula();
+     public int Crearindex(int cedula){
          int index = 0;
-         for (int i = 0; i < nombre.length(); i++) {
-          int a = nombre.charAt(i);
-          index += a;
-         }
-         cedula /= 1000000;
-         index /= cedula;
+         index = cedula/20000;
          return index;
      } 
     
