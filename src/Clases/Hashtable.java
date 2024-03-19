@@ -1,4 +1,3 @@
-
 package Clases;
 
 public class Hashtable {
@@ -27,12 +26,15 @@ public class Hashtable {
     }
 
     public void Insert (Cliente cliente){
+       if(isEmpty()){
+          getArray()[0] = cliente; 
+       }else{
          if (searchSpace()== -1){
          Cliente[] array2 = copyArray();
          array2[array2.length-1] = cliente;
          setArray(array2);
          }else{
-          int index = Crearindex(cliente.getCedula());
+          int index = Crearindex(cliente.getNombre(), cliente.getApellido());
           if (getArray()[index] == null){
            getArray()[index] = cliente;   
           }else{
@@ -40,10 +42,22 @@ public class Hashtable {
           }
          }             
         } 
+    }
      
-     public int Crearindex(int cedula){
+     public int Crearindex(String nombre, String apellido){
+         int nombreh = 0;
+         int apellidoh = 0;
          int index = 0;
-         index = cedula/20000;
+         for (int i = 0; i < nombre.length(); i++) {
+          int a = nombre.charAt(i);
+          nombreh += a;
+         }
+         for (int i = 0; i < apellido.length(); i++) {
+          int a = nombre.charAt(i);
+          apellidoh += a;
+         }
+         index = nombreh + apellidoh;
+         index/= apellidoh;
          return index;
      } 
     
@@ -67,5 +81,4 @@ public class Hashtable {
      public boolean isEmpty() {
         return getArray()[0] == null;
     }
-     
 }

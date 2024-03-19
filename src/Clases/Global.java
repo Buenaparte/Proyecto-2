@@ -70,6 +70,10 @@ public class Global {
       a++;
      }
    }  
-    
+   
+   public void busquedacliente(String nombre, String apellido){
+       int index = getClientesarray().Crearindex(nombre, apellido);
+       System.out.println(getClientesarray().getArray()[index].getNumerohabitacion());
+   } 
  
 }
