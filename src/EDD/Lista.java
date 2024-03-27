@@ -1,5 +1,8 @@
 
-package Clases;
+package EDD;
+
+import Clases.Cliente;
+import EDD.NodoLista;
 
 public class Lista {
     private int size;

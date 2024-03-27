@@ -1,37 +1,39 @@
-package Clases;
+package EDD;
 
-public class BST2 {
-    private NodoBst2 root;
+import Clases.Cliente;
 
-    public BST2() {
+public class BST {
+    private Nodo root;
+
+    public BST() {
         this.root = null;
     }
 
-    public NodoBst2 getRoot() {
+    public Nodo getRoot() {
         return root;
     }
 
-    public void setRoot(NodoBst2 root) {
+    public void setRoot(Nodo root) {
         this.root = root;
     }
-   //revisar codigo algo esta raro     
-    public void insertLista(Lista element, NodoBst2 pointer) {
-        NodoBst2 nodo = new NodoBst2(element);
+        
+    public void insertCedula(Cliente element, Nodo pointer) {
+        Nodo nodo = new Nodo(element);
         if (isEmpty()) {
             setRoot(nodo);
         } else {
             if(element == pointer.getElement()) {
                 System.out.println("El elemento no es valido");
                 return;
-            } else if (element.getKey() < pointer.getElement().getKey()) {
+            } else if (element.getCedula() < pointer.getElement().getCedula()) {
                 if (pointer.hasLeftSon()) {
-                    insertLista(element, pointer.getLeftSon());
+                    insertCedula(element, pointer.getLeftSon());
                 } else {
                     pointer.setLeftSon(nodo);
                 }
             } else {
                 if (pointer.hasRightSon()) {
-                    insertLista(element, pointer.getRightSon());
+                    insertCedula(element, pointer.getRightSon());
                 } else {
                     pointer.setRightSon(nodo);
                 }
@@ -39,17 +41,17 @@ public class BST2 {
         }
     }
     
-    public void insertSimple(Lista element) {
-        NodoBst2 nodo = new NodoBst2(element);
+    public void insertSimple(Cliente element) {
+        Nodo nodo = new Nodo(element);
         if (isEmpty()) {
             setRoot(nodo);
         } else {
-            NodoBst2 pointer = getRoot();
+            Nodo pointer = getRoot();
             while (true) {
                 if(element == pointer.getElement()) {
                     System.out.println("El elemento no es valido");
                     return;
-                } else if (element.getKey() < pointer.getElement().getKey()) {
+                } else if (element.getCedula() < pointer.getElement().getCedula()) {
                     if (pointer.hasLeftSon()) {
                         pointer = pointer.getLeftSon();
                     } else {
@@ -68,8 +70,8 @@ public class BST2 {
         
     }
     
-    public NodoBst2 searchNodoToReplace(NodoBst2 nodo){
-        NodoBst2 previous = nodo;
+    public Nodo searchNodoToReplace(Nodo nodo){
+        Nodo previous = nodo;
         while (nodo.getRightSon() != null){
             previous = nodo;
             nodo = nodo.getRightSon();
@@ -82,16 +84,16 @@ public class BST2 {
         
         return nodo;
     }
-      
-       public Lista searchPrevias(int element, NodoBst2 raiz){
-     if( raiz != null && element != raiz.getElement().getKey()){
-      searchPrevias(element,raiz.getLeftSon());
-      searchPrevias(element,raiz.getRightSon());
+    
+    public Cliente searchCedula(int element, Nodo raiz){
+     if( raiz != null && element != raiz.getElement().getCedula()){
+      searchCedula(element,raiz.getLeftSon());
+      searchCedula(element,raiz.getRightSon());
      }   
      return raiz.getElement();
     }
-       
-        public void preOrden(NodoBst2 raiz) {
+    
+        public void preOrden(Nodo raiz) {
         if (raiz != null) {
             System.out.println("[ " + raiz.getElement() + " ]");
             preOrden(raiz.getLeftSon());
@@ -99,7 +101,7 @@ public class BST2 {
         }
     }
     
-    public void postOrden(NodoBst2 raiz) {
+    public void postOrden(Nodo raiz) {
         if (raiz != null) {
             postOrden(raiz.getLeftSon());
             postOrden(raiz.getRightSon());
@@ -107,7 +109,7 @@ public class BST2 {
         }
     }
     
-    public void inOrden(NodoBst2 raiz) {
+    public void inOrden(Nodo raiz) {
         if (raiz != null) {
             inOrden(raiz.getLeftSon());
             System.out.println("[ " + raiz.getElement() + " ]");
@@ -115,7 +117,7 @@ public class BST2 {
         }
     }
     
-    public boolean validateLeftSon(NodoBst2 nodo) {
+    public boolean validateLeftSon(Nodo nodo) {
         return nodo.getRightSon() != null;
     }
     

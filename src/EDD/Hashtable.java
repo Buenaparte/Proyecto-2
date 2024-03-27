@@ -1,5 +1,7 @@
 
-package Clases;
+package EDD;
+
+import Clases.Cliente;
 
 public class Hashtable {
  private Cliente array[];

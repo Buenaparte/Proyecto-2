@@ -1,36 +1,38 @@
-package Clases;
+package EDD;
 
-public class NodoBst2 {
- private Lista element;
- private NodoBst2 leftSon, rightSon;
+import Clases.Cliente;
 
-    public NodoBst2(Lista element) {
+public class Nodo {
+ private Cliente element;
+ private Nodo leftSon, rightSon;
+
+    public Nodo(Cliente element) {
         this.element = element;
         this.leftSon = null;
         this.rightSon = null;
     }
 
-    public Lista getElement() {
+    public Cliente getElement() {
         return element;
     }
 
-    public void setElement(Lista element) {
+    public void setElement(Cliente element) {
         this.element = element;
     }
 
-    public NodoBst2 getLeftSon() {
+    public Nodo getLeftSon() {
         return leftSon;
     }
 
-    public void setLeftSon(NodoBst2 leftSon) {
+    public void setLeftSon(Nodo leftSon) {
         this.leftSon = leftSon;
     }
 
-    public NodoBst2 getRightSon() {
+    public Nodo getRightSon() {
         return rightSon;
     }
 
-    public void setRightSon(NodoBst2 rightSon) {
+    public void setRightSon(Nodo rightSon) {
         this.rightSon = rightSon;
     }
     
