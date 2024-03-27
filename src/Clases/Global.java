@@ -62,8 +62,6 @@ public class Global {
         this.arbollistas = arbollistas;
     }
  
-    
-    
    public void llenararbollistas(){
      Lista lista =  new Lista();
      getArbollistas().insertLista(lista, getArbollistas().getRoot());
@@ -76,5 +74,8 @@ public class Global {
      }
    }  
     
- 
+   public void busquedacliente(String nombre, String apellido){
+       int index = getClientesarray().Crearindex(nombre, apellido);
+       System.out.println(getClientesarray().getArray()[index].getNombre());
+   } 
 }

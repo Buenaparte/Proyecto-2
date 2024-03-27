@@ -12,7 +12,7 @@ public class NodoLista {
         this.siguiente = null;
     }
 
-    public Object getElement() {
+    public Cliente getElement() {
         return element;
     }
 

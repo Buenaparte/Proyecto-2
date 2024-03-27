@@ -71,8 +71,14 @@ public class Lista {
     }
     
      
-    public void comparacion(){
-         
+    public Cliente recorrer(int contador){
+      NodoLista pointer = getHead();
+      int a = 0;
+        while (pointer.getSiguiente() != null && a < contador) {
+            pointer = pointer.getSiguiente();
+            a++;
+        }
+      return pointer.getElement();
     }
      
     public void print(){

@@ -3,6 +3,7 @@ package Main;
 
 import Clases.Global;
 import Funciones.FuncionExcel;
+import Clases.Cliente;
 
 public class Main {
     
@@ -15,7 +16,12 @@ public class Main {
     //global.getArbollistas().inOrden(global.getArbollistas().getRoot());
     FuncionExcel func = new FuncionExcel();
     System.out.println(func.ReadExcel("reservas", 1, 2));
-    func.LlenarCliente();
-    
+    global.setListaprevias(func.LlenarCliente());
+        for (int i = 0; i < global.getListaprevias().getSize(); i++) {
+           Cliente cl = global.getListaprevias().recorrer(i);
+            System.out.println(cl.getApellido());
+           global.getClientesarray().Insert(cl);
+        }
+    global.busquedacliente("Evered", "Ralestone");
     }   
 }

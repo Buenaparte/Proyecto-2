@@ -34,7 +34,7 @@ public class Hashtable {
          array2[array2.length-1] = cliente;
          setArray(array2);
          }else{
-          int index = Crearindex(cliente.getCedula());
+          int index = Crearindex(cliente.getNombre(), cliente.getApellido());
           if (getArray()[index] == null){
            getArray()[index] = cliente;   
           }else{
@@ -43,9 +43,20 @@ public class Hashtable {
          }             
         } 
      
-     public int Crearindex(int cedula){
+      public int Crearindex(String nombre, String apellido){
+         int nombreh = 0;
+         int apellidoh = 0;
          int index = 0;
-         index = cedula/20000;
+         for (int i = 0; i < nombre.length(); i++) {
+          int a = nombre.charAt(i);
+          nombreh += a;
+         }
+         for (int i = 0; i < apellido.length(); i++) {
+          int b = apellido.charAt(i);
+          apellidoh += b;
+         }
+         index = nombreh + apellidoh;
+         index/= apellidoh/100;
          return index;
      } 
     

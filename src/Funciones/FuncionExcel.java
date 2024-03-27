@@ -49,9 +49,9 @@ public class FuncionExcel {
     }
     
     
-    public void LlenarCliente(){
+    public Lista LlenarCliente(){
         Lista listaReservas = new Lista();
-        for (int i = 1; i < 1001; i++) {
+        for (int i = 1; i < 10; i++) {
             int ci = Integer.parseInt(ReadExcel("reservas", i, 0));
             String nombre = ReadExcel("reservas", i, 1);
             String apellido = ReadExcel("reservas", i, 2);
@@ -64,9 +64,7 @@ public class FuncionExcel {
             Cliente cliente = new Cliente(nombre, apellido, genero, correo,tipohab,ci, tlf, dateLlegada, dateSalida);
             listaReservas.InsertFinal(cliente);
         }
-            
-        
-        
+          return listaReservas;         
     }
     
     
