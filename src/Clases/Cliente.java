@@ -2,10 +2,10 @@ package Clases;
 import java.time.LocalDate;
 
 public class Cliente {
-    private String Nombre,Apellido,genero,correo,tipohabitacion,llegada,salida;
-    private int Cedula,celular;
+    private String Nombre,Apellido,genero,correo,tipohabitacion,llegada,salida,celular;
+    private int Cedula;
 
-    public Cliente(String Nombre, String Apellido, String genero, String correo,String tipohabitacion,  int Cedula, int celular,String llegada, String salida) {
+    public Cliente(String Nombre, String Apellido, String genero, String correo,String tipohabitacion,  int Cedula, String celular,String llegada, String salida) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.genero = genero;
@@ -57,11 +57,11 @@ public class Cliente {
         this.Cedula = Cedula;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

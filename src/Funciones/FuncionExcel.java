@@ -24,7 +24,7 @@ public class FuncionExcel {
     public String ReadExcel(String sheetName, int rowNumber, int cNumber){
         String data = "";
         try{
-             FileInputStream fis = new FileInputStream("./src/Images/Booking_hotel.xlsx");
+            FileInputStream fis = new FileInputStream("./src/Images/Booking_hotel.xlsx");
             Workbook wb = WorkbookFactory.create(fis);
             Sheet s = wb.getSheet(sheetName);
             Row r = s.getRow(rowNumber);
@@ -51,14 +51,14 @@ public class FuncionExcel {
     
     public void LlenarCliente(){
         Lista listaReservas = new Lista();
-        for (int i = 0; i < 1001; i++) {
+        for (int i = 1; i < 1001; i++) {
             int ci = Integer.parseInt(ReadExcel("reservas", i, 0));
             String nombre = ReadExcel("reservas", i, 1);
             String apellido = ReadExcel("reservas", i, 2);
             String correo = ReadExcel("reservas", i, 3);
             String genero = ReadExcel("reservas", i, 4);
             String tipohab = ReadExcel("reservas", i, 5);
-            int tlf = Integer.parseInt(ReadExcel("reservas", i, 6));
+            String tlf = (ReadExcel("reservas", i, 6));
             String dateLlegada = ReadExcel("reservas", i, 7);
             String dateSalida = ReadExcel("reservas", i, 7);
             Cliente cliente = new Cliente(nombre, apellido, genero, correo,tipohab,ci, tlf, dateLlegada, dateSalida);
