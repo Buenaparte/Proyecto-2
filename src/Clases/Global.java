@@ -1,6 +1,11 @@
 
 package Clases;
 
+import EDD.Hashtable;
+import EDD.Lista;
+import EDD.BST2;
+import EDD.BST;
+
 public class Global {
  private Lista listahabitaciones;
  private Lista listaprevias;

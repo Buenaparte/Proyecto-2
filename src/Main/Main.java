@@ -1,5 +1,7 @@
 
-package Clases;
+package Main;
+
+import Clases.Global;
 
 public class Main {
     
