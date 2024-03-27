@@ -74,6 +74,11 @@ public class Global {
      }
    }  
     
+   public void busquedacedula(int cedula){
+    Cliente cl = this.arbol.searchCedula(cedula, this.arbol.getRoot());
+    System.out.println("nombre: "+cl.getNombre()+" Apellido: "+cl.getApellido()+" Email: "+cl.getCorreo()+" genero: "+cl.getGenero()+" Tipo de habitacion: "+cl.getTipohabitacion()+" celular: "+cl.getCelular()+" Llegada: "+cl.getLlegada()+" Salida: "+cl.getSalida());
+   }
+   
    public void busquedacliente(String nombre, String apellido){
        int index = getClientesarray().Crearindex(nombre, apellido);
        System.out.println(getClientesarray().getArray()[index].getNombre());

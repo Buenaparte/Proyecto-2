@@ -13,8 +13,8 @@ public class Cliente {
         this.tipohabitacion = tipohabitacion;
         this.Cedula = Cedula;
         this.celular = celular;
-        this.llegada = null;
-        this.salida = null;
+        this.llegada = llegada;
+        this.salida = salida;
     }
 
     public String getNombre() {
