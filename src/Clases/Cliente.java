@@ -2,11 +2,10 @@ package Clases;
 import java.time.LocalDate;
 
 public class Cliente {
-    private String Nombre,Apellido,genero,correo,tipohabitacion;
+    private String Nombre,Apellido,genero,correo,tipohabitacion,llegada,salida;
     private int Cedula,celular;
-    private LocalDate llegada,salida;
 
-    public Cliente(String Nombre, String Apellido, String genero, String correo,String tipohabitacion,  int Cedula, int celular) {
+    public Cliente(String Nombre, String Apellido, String genero, String correo,String tipohabitacion,  int Cedula, int celular,String llegada, String salida) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.genero = genero;
@@ -66,15 +65,15 @@ public class Cliente {
         this.celular = celular;
     }
 
-    public LocalDate getLlegada() {
+    public String getLlegada() {
         return llegada;
     }
 
-    public void setLlegada(LocalDate llegada) {
+    public void setLlegada(String llegada) {
         this.llegada = llegada;
     }
 
-    public LocalDate getSalida() {
+    public String getSalida() {
         return salida;
     }
 
@@ -86,17 +85,9 @@ public class Cliente {
         this.tipohabitacion = tipohabitacion;
     }
         
-    public void setSalida(LocalDate salida) {
+    public void setSalida(String salida) {
         this.salida = salida;
     }
     
-    public void creacionfechasiniciales(int año, int mes, int dia){
-     LocalDate date = LocalDate.of(año, mes, dia);
-     setLlegada(date);
-    }
-    
-     public void creacionfechasfinales(int año, int mes, int dia){
-     LocalDate date = LocalDate.of(año, mes, dia);
-     setSalida(date);
-    } 
+   
 }
