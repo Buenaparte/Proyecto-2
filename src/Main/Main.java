@@ -2,6 +2,7 @@
 package Main;
 
 import Clases.Global;
+import Funciones.FuncionExcel;
 
 public class Main {
     
@@ -12,5 +13,9 @@ public class Main {
     Global global = new Global();
     global.llenararbollistas();
     //global.getArbollistas().inOrden(global.getArbollistas().getRoot());
+    FuncionExcel func = new FuncionExcel();
+    System.out.println(func.ReadExcel("reservas", 1, 2));
+    func.LlenarCliente();
+    
     }   
 }
