@@ -5,8 +5,9 @@
  */
 package Funciones;
 
-import Clases.Cliente;
-import EDD.Lista;
+
+import Clases.ClienteReservas;
+import EDD.Lista2;
 import java.io.FileInputStream;
 import java.time.ZoneId;
 import org.apache.poi.ss.usermodel.Cell;
@@ -49,8 +50,8 @@ public class FuncionExcel {
     }
     
     
-    public Lista LlenarCliente(){
-        Lista listaReservas = new Lista();
+    public Lista2 LlenarCliente(){
+        Lista2 listaReservas = new Lista2();
         for (int i = 1; i < 10; i++) {
             int ci = Integer.parseInt(ReadExcel("reservas", i, 0));
             String nombre = ReadExcel("reservas", i, 1);
@@ -61,7 +62,7 @@ public class FuncionExcel {
             String tlf = (ReadExcel("reservas", i, 6));
             String dateLlegada = ReadExcel("reservas", i, 7);
             String dateSalida = ReadExcel("reservas", i, 7);
-            Cliente cliente = new Cliente(nombre, apellido, genero, correo,tipohab,ci, tlf, dateLlegada, dateSalida);
+            ClienteReservas cliente = new ClienteReservas(nombre, apellido, genero, correo,tipohab,ci, tlf, dateLlegada, dateSalida);
             listaReservas.InsertFinal(cliente);
         }
           return listaReservas;         

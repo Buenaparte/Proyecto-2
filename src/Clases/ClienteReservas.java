@@ -1,17 +1,19 @@
 package Clases;
 
-public class Cliente {
-    private String Nombre,Apellido,genero,correo,llegada,celular;
-    private int numerohabitacion;
+public class ClienteReservas {
+    private String Nombre,Apellido,genero,correo,tipohabitacion,llegada,salida,celular;
+    private int Cedula;
 
-    public Cliente(String Nombre, String Apellido, String genero, String correo,String celular,String llegada, int numerohabitacion) {
+    public ClienteReservas(String Nombre, String Apellido, String genero, String correo,String tipohabitacion,  int Cedula, String celular,String llegada, String salida) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.genero = genero;
         this.correo = correo;
+        this.tipohabitacion = tipohabitacion;
+        this.Cedula = Cedula;
         this.celular = celular;
         this.llegada = llegada;
-        this.numerohabitacion = numerohabitacion;
+        this.salida = salida;
     }
 
     public String getNombre() {
@@ -46,6 +48,14 @@ public class Cliente {
         this.correo = correo;
     }
 
+    public int getCedula() {
+        return Cedula;
+    }
+
+    public void setCedula(int Cedula) {
+        this.Cedula = Cedula;
+    }
+
     public String getCelular() {
         return celular;
     }
@@ -62,12 +72,21 @@ public class Cliente {
         this.llegada = llegada;
     }
 
-    public int getNumerohabitacion() {
-        return numerohabitacion;
+    public String getSalida() {
+        return salida;
     }
 
-    public void setNumerohabitacion(int numerohabitacion) {
-        this.numerohabitacion = numerohabitacion;
+    public String getTipohabitacion() {
+        return tipohabitacion;
+    }
+
+    public void setTipohabitacion(String tipohabitacion) {
+        this.tipohabitacion = tipohabitacion;
+    }
+        
+    public void setSalida(String salida) {
+        this.salida = salida;
     }
     
+   
 }
