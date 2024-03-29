@@ -6,7 +6,9 @@
 package Funciones;
 
 import Clases.Cliente;
+import Clases.Habitacion;
 import EDD.Lista;
+import EDD.NodoLista;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -102,8 +104,7 @@ public class FuncionExcel {
                             listaReservas.InsertFinal(nuevoCliente);
                         }
                     }                     
-            }                
-                listaReservas.print();
+            }                 listaReservas.print();
 
             }
         }
@@ -114,7 +115,46 @@ public class FuncionExcel {
 
     }
     
-    
+    public void LeerExcelHabitaciones(String path, Lista clientes){
+        Lista listaHabitaciones = new Lista();
+        Cliente cliente = (Cliente) clientes.getHead().getElement();
+        NodoLista aux = clientes.getHead();
+        System.out.println("cliente");
+        try {
+            File archivo = new File(path);
+            FileReader lector = new FileReader(archivo);
+            try (java.io.BufferedReader buffer = new BufferedReader(lector)) {
+                
+                String linea;                  
+                buffer.readLine();
+                while ((linea = buffer.readLine()) != null ) {
+                    String[] datosCliente = linea.split(";");
+                    if(datosCliente.length == 3){
+                        String num = datosCliente[0];
+                        String tipo = datosCliente[1];
+                        String piso = datosCliente[2];
+                        if(  !num.equals(" ")&& !tipo.equals(" ")&& !piso.equals(" ")){
+                            int intNum = Integer.parseInt(num);
+                            int intPiso = Integer.parseInt(num);
+                            cliente = aux.getElement();
+                            
+                            Habitacion nuevaHabitacion = new Habitacion(intNum,intPiso,tipo,cliente);
+                            //No se donde se guardan las habitaciones
+                            //listaHabitaciones.InsertFinal(nuevaHabitacion);
+                            aux.getSiguiente();
+                        }
+                    }                     
+            }                System.out.println("listo");
+                listaHabitaciones.print();
+
+            }
+        }
+        catch(IOException ioe) {
+            System.out.println("Archivo invalido");
+          ioe.printStackTrace();
+        }
+
+    }
     
     
     
