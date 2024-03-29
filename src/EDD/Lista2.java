@@ -1,15 +1,15 @@
 
 package EDD;
 
-import Clases.Habitacion;
-import EDD.NodoLista;
+import Clases.ClienteReservas;
 
-public class Lista {
+//arbol
+public class Lista2 {
     private int size;
-    private NodoLista head;
+    private NodoLista2 head;
     private int key;
 
-    public Lista() {
+    public Lista2() {
         this.size = 0;
         this.head = null;
         this.key = 1;
@@ -31,20 +31,20 @@ public class Lista {
         this.key = key;
     }
 
-    public NodoLista getHead() {
+    public NodoLista2 getHead() {
         return head;
     }
 
-    public void setHead(NodoLista head) {
+    public void setHead(NodoLista2 head) {
         this.head = head;
     }
     
-    public void InsertFinal(Habitacion element){
-      NodoLista nodo = new NodoLista(element);
+    public void InsertFinal(ClienteReservas element){
+      NodoLista2 nodo = new NodoLista2(element);
         if (Vacio()){
           setHead(nodo);
         }else{ 
-         NodoLista aux = getHead();
+         NodoLista2 aux = getHead();
          while(aux.getSiguiente() != null){
           aux = aux.getSiguiente();
         }
@@ -57,11 +57,11 @@ public class Lista {
          if (Vacio()){
             System.out.println("No hay nada que eleminar");
         }else{
-           NodoLista aux = getHead();
+           NodoLista2 aux = getHead();
            while(aux.getSiguiente().getSiguiente() != null){
             aux = aux.getSiguiente();
            } 
-           NodoLista aux2 = aux.getSiguiente();
+           NodoLista2 aux2 = aux.getSiguiente();
            aux.setSiguiente(null);
            aux2.setSiguiente(null);
            size --;
@@ -71,8 +71,8 @@ public class Lista {
     }
     
      
-    public Habitacion recorrer(int contador){
-      NodoLista pointer = getHead();
+    public ClienteReservas recorrer(int contador){
+      NodoLista2 pointer = getHead();
       int a = 0;
         while (pointer.getSiguiente() != null && a < contador) {
             pointer = pointer.getSiguiente();
@@ -82,15 +82,10 @@ public class Lista {
     }
      
     public void print(){
-        NodoLista pointer = getHead();
-        if (!Vacio()){
-            while (pointer != null) {
+        NodoLista2 pointer = getHead();
+        while (pointer != null) {
             System.out.println("[ "+pointer.getElement() + " ]");
             pointer = pointer.getSiguiente();
-            }
-        }
-        else{
-            System.out.println("Lista vacia");
         }
     }
     

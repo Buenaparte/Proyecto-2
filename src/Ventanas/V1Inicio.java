@@ -70,7 +70,7 @@ public class V1Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
-        V2Menu ventana = new V2Menu();
+        V1_2Archivos ventana = new V1_2Archivos();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_inicioActionPerformed

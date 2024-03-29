@@ -11,6 +11,9 @@ import EDD.Lista;
 import EDD.NodoLista;
 import java.io.BufferedReader;
 import java.io.File;
+import Clases.ClienteReservas;
+import EDD.Lista2;
+import EDD.NodoLista2;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -55,9 +58,10 @@ public class FuncionExcel {
     }
     
     
-    public void LlenarCliente(){
-        Lista listaReservas = new Lista();
-        for (int i = 1; i < 92; i++) {
+
+    public Lista2 LlenarCliente(){
+        Lista2 listaReservas = new Lista2();
+        for (int i = 1; i < 10; i++) {
             int ci = Integer.parseInt(ReadExcel("reservas", i, 0));
             String nombre = ReadExcel("reservas", i, 1);
             String apellido = ReadExcel("reservas", i, 2);
@@ -67,17 +71,18 @@ public class FuncionExcel {
             String tlf = (ReadExcel("reservas", i, 6));
             String dateLlegada = ReadExcel("reservas", i, 7);
             String dateSalida = ReadExcel("reservas", i, 8);
-            Cliente cliente = new Cliente(nombre, apellido, genero, correo,tipohab,ci, tlf, dateLlegada, dateSalida);
+            ClienteReservas cliente = new ClienteReservas(ci,nombre,apellido,correo,genero,tipohab,tlf,dateLlegada,dateSalida);
+
             listaReservas.InsertFinal(cliente);
             System.out.println(i);
         }
         listaReservas.print();
-       
+       return listaReservas;
     }
     
     
     public void LeerExcelReservas(String path){
-        Lista listaReservas = new Lista();
+        Lista2 listaReservas = new Lista2();
         try {
             File archivo = new File(path);
             FileReader lector = new FileReader(archivo);
@@ -100,7 +105,7 @@ public class FuncionExcel {
                         String datesalida = datosCliente[8];
                         if( !ci.equals(" ") &&!name.equals(" ")&& !lname.equals(" ")&& !correo.equals(" ")&& !genero.equals(" ")&& !tipohab.equals(" ")&& !tlf.equals(" ")&& !datellegada.equals(" ")&& !datesalida.equals(" ")){
                             int intCI = Integer.parseInt(ci);
-                            Cliente nuevoCliente = new Cliente(name, lname,genero,correo,tipohab,intCI,tlf,datellegada,datesalida);
+                            ClienteReservas nuevoCliente = new ClienteReservas(intCI,name,lname,correo,genero,tipohab,tlf,datellegada,datesalida);
                             listaReservas.InsertFinal(nuevoCliente);
                         }
                     }                     
@@ -115,11 +120,10 @@ public class FuncionExcel {
 
     }
     
-    public void LeerExcelHabitaciones(String path, Lista clientes){
+    public void LeerExcelHabitaciones(String path, Lista2 clientes){
         Lista listaHabitaciones = new Lista();
-        Cliente cliente = (Cliente) clientes.getHead().getElement();
-        NodoLista aux = clientes.getHead();
-        System.out.println("cliente");
+        //ClienteReservas cliente =  clientes.getHead().getElement();
+        //NodoLista2 aux = clientes.getHead();
         try {
             File archivo = new File(path);
             FileReader lector = new FileReader(archivo);
@@ -135,13 +139,11 @@ public class FuncionExcel {
                         String piso = datosCliente[2];
                         if(  !num.equals(" ")&& !tipo.equals(" ")&& !piso.equals(" ")){
                             int intNum = Integer.parseInt(num);
-                            int intPiso = Integer.parseInt(num);
-                            cliente = aux.getElement();
+                            //cliente = aux.getElement();
                             
-                            Habitacion nuevaHabitacion = new Habitacion(intNum,intPiso,tipo,cliente);
-                            //No se donde se guardan las habitaciones
-                            //listaHabitaciones.InsertFinal(nuevaHabitacion);
-                            aux.getSiguiente();
+                            Habitacion nuevaHabitacion = new Habitacion(intNum,piso,tipo);
+                            listaHabitaciones.InsertFinal(nuevaHabitacion);
+                            //aux.getSiguiente();
                         }
                     }                     
             }                System.out.println("listo");

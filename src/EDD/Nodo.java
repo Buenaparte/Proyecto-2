@@ -1,22 +1,22 @@
 package EDD;
 
-import Clases.Cliente;
+import Clases.ClienteReservas;
 
 public class Nodo {
- private Cliente element;
+ private ClienteReservas element;
  private Nodo leftSon, rightSon;
 
-    public Nodo(Cliente element) {
+    public Nodo(ClienteReservas element) {
         this.element = element;
         this.leftSon = null;
         this.rightSon = null;
     }
 
-    public Cliente getElement() {
+    public ClienteReservas getElement() {
         return element;
     }
 
-    public void setElement(Cliente element) {
+    public void setElement(ClienteReservas element) {
         this.element = element;
     }
 

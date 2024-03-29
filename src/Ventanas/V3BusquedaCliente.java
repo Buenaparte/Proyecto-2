@@ -5,7 +5,7 @@
 package Ventanas;
 
 import java.awt.Color;
-
+import Clases.Global;
 /**
  *
  * @author Jose
@@ -33,8 +33,14 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         panelRound1 = new Clases.PanelRound();
         jLabel4 = new javax.swing.JLabel();
-        cedula = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
         volver = new javax.swing.JButton();
+        panelRound2 = new Clases.PanelRound();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        apellido = new javax.swing.JTextField();
+        buscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,21 +58,20 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Cedula");
+        jLabel4.setText("Nombre");
         panelRound1.add(jLabel4);
 
         jPanel2.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 130, -1));
 
-        cedula.setBackground(new java.awt.Color(0, 169, 105));
-        cedula.setForeground(new java.awt.Color(255, 255, 255));
-        cedula.setText("000000000");
-        cedula.setBorder(null);
-        cedula.addActionListener(new java.awt.event.ActionListener() {
+        nombre.setBackground(new java.awt.Color(0, 169, 105));
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
+        nombre.setBorder(null);
+        nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cedulaActionPerformed(evt);
+                nombreActionPerformed(evt);
             }
         });
-        jPanel2.add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 80, 30));
+        jPanel2.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 80, 30));
 
         volver.setBackground(new java.awt.Color(0, 169, 105));
         volver.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,6 +83,48 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         });
         jPanel2.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
 
+        panelRound2.setBackground(new java.awt.Color(0, 169, 105));
+        panelRound2.setRoundBottomLeft(10);
+        panelRound2.setRoundBottomRight(10);
+        panelRound2.setRoundTopLeft(10);
+        panelRound2.setRoundTopRight(10);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Apellido");
+        panelRound2.add(jLabel5);
+
+        jPanel2.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 130, 130, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 440, 50));
+
+        apellido.setBackground(new java.awt.Color(0, 169, 105));
+        apellido.setForeground(new java.awt.Color(255, 255, 255));
+        apellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 80, 30));
+
+        buscar.setBackground(new java.awt.Color(0, 169, 105));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("Buscar");
+        jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4_1.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -86,15 +133,19 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cedulaActionPerformed
+    }//GEN-LAST:event_nombreActionPerformed
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         V2Menu ventana = new V2Menu();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
+
+    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,11 +214,17 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cedula;
+    private javax.swing.JTextField apellido;
+    private javax.swing.JButton buscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField nombre;
     private Clases.PanelRound panelRound1;
+    private Clases.PanelRound panelRound2;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
