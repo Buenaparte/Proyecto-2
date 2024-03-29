@@ -4,13 +4,13 @@ public class ClienteReservas {
     private String Nombre,Apellido,genero,correo,tipohabitacion,llegada,salida,celular;
     private int Cedula;
 
-    public ClienteReservas(String Nombre, String Apellido, String genero, String correo,String tipohabitacion,  int Cedula, String celular,String llegada, String salida) {
+    public ClienteReservas(int Cedula, String Nombre, String Apellido,String correo, String genero,String tipohabitacion,    String celular,String llegada, String salida) {
+        this.Cedula = Cedula;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
-        this.genero = genero;
         this.correo = correo;
+        this.genero = genero;
         this.tipohabitacion = tipohabitacion;
-        this.Cedula = Cedula;
         this.celular = celular;
         this.llegada = llegada;
         this.salida = salida;

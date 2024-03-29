@@ -1,7 +1,7 @@
 
 package EDD;
 
-import Clases.Cliente;
+import Clases.Habitacion;
 import EDD.NodoLista;
 
 public class Lista {
@@ -39,7 +39,7 @@ public class Lista {
         this.head = head;
     }
     
-    public void InsertFinal(Cliente element){
+    public void InsertFinal(Habitacion element){
       NodoLista nodo = new NodoLista(element);
         if (Vacio()){
           setHead(nodo);
@@ -71,7 +71,7 @@ public class Lista {
     }
     
      
-    public Cliente recorrer(int contador){
+    public Habitacion recorrer(int contador){
       NodoLista pointer = getHead();
       int a = 0;
         while (pointer.getSiguiente() != null && a < contador) {

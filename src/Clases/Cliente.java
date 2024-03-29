@@ -4,14 +4,15 @@ public class Cliente {
     private String Nombre,Apellido,genero,correo,llegada,celular;
     private int numerohabitacion;
 
-    public Cliente(String Nombre, String Apellido, String genero, String correo,String celular,String llegada, int numerohabitacion) {
+    public Cliente(int numerohabitacion, String Nombre, String Apellido,String correo, String genero, String celular,String llegada) {
+        this.numerohabitacion = numerohabitacion;
         this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.genero = genero;
+        this.Apellido = Apellido;   
         this.correo = correo;
+        this.genero = genero;
         this.celular = celular;
         this.llegada = llegada;
-        this.numerohabitacion = numerohabitacion;
+        
     }
 
     public String getNombre() {

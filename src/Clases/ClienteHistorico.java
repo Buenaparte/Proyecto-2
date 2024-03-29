@@ -4,13 +4,13 @@ public class ClienteHistorico {
     private String Nombre,Apellido,genero,correo,llegada;
     private int Cedula,numerohabitacion;
 
-    public ClienteHistorico(String Nombre, String Apellido, String genero, String correo,String llegada, int numerohabitacion, int cedula) {
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.genero = genero;
-        this.correo = correo;
-        this.llegada = llegada;
+    public ClienteHistorico(int cedula, String Nombre, String Apellido,String correo, String genero, String llegada, int numerohabitacion) {
         this.Cedula = cedula;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;   
+        this.correo = correo;
+        this.genero = genero;
+        this.llegada = llegada;
         this.numerohabitacion = numerohabitacion;
     }
 

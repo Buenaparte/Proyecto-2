@@ -4,11 +4,20 @@ package Main;
 import Clases.Global;
 import Clases.ClienteReservas;
 import Funciones.FuncionExcel;
+import Ventanas.V1Inicio;
+import org.apache.poi.hemf.record.emfplus.HemfPlusHeader;
 
 public class Main {
     
     public static void main(String[] args) {
-    Global global = new Global();
+        V1Inicio ventana = new V1Inicio();
+        ventana.setVisible(true);
+        // cliente reserva =  reservacion bst
+        
+        // cliente = estado
+        //cliente historico = historico
+        
+    /*Global global = new Global();
     global.llenararbollistas();
     //global.getArbollistas().inOrden(global.getArbollistas().getRoot());
     FuncionExcel func = new FuncionExcel();
@@ -21,6 +30,6 @@ public class Main {
            //global.getClientesarray().Insert(cl);
         }
       global.busquedacedula(13502927);
-    //global.busquedacliente("Evered", "Ralestone");
+    //global.busquedacliente("Evered", "Ralestone");*/
     }   
 }
