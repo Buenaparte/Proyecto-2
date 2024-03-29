@@ -123,6 +123,11 @@ public class Global {
        int index = getClientesarray().Crearindex(nombre, apellido);
        System.out.println(getClientesarray().getArray()[index].getNombre());
    } 
+   
+   /*public void busquedacliente(String nombre, String apellido){
+       int index = getClientesarray().Crearindex(nombre, apellido);
+       System.out.println(getClientesarray().getArray()[index].getNombre());
+   } */
 
     public static void reservations(){
     String line = "";
@@ -134,7 +139,7 @@ public class Global {
         while ((line = rd.readLine()) != null){
             if (count > 0){
                 String[] values = line.split(",");
-                ClienteReservas reserva = new ClienteReservas(values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7],values[8]);
+                ClienteReservas reserva = new ClienteReservas(convertirCedula(values[0]),values[1],values[2],values[3],values[4],values[5],values[6],values[7],values[8]);
                 //arbol.
                 
             }
@@ -156,7 +161,7 @@ public class Global {
         while ((line = rd.readLine()) != null){
             if (count > 0){
                 String[] values = line.split(",");
-                Cliente cliente = new Cliente(values[0],values[1],values[2],values[3],values[4],values[5],values[6]);
+                Cliente cliente = new Cliente(Integer.parseInt(values[0]),values[1],values[2],values[3],values[4],values[5],values[6]);
                 System.out.println(cliente);
                 //clientesarray.Insert(cliente);   
             }
@@ -166,6 +171,16 @@ public class Global {
     } catch(Exception e){
         JOptionPane.showMessageDialog(null, "Algo esta mal con el archivo de Estado" + e);
     }
+}
+    public static int convertirCedula(String cedulaString) {
+        // Reemplazar todos los puntos de la cédula por una cadena vacía
+            String cedulaSinPuntos = cedulaString.replace(".", "");
+
+            // Convertir la cadena sin puntos a un número entero
+            int cedulaInt = Integer.parseInt(cedulaSinPuntos);
+
+            // Devolver el número entero
+            return cedulaInt;
 }
     
     public static void historico(){
@@ -178,7 +193,7 @@ public class Global {
         while ((line = rd.readLine()) != null){
             if (count > 0){
                 String[] values = line.split(",");
-                ClienteHistorico cliente = new ClienteHistorico(values[0],values[1],values[2],values[3],values[4],values[5],values[6]);
+                ClienteHistorico cliente = new ClienteHistorico(convertirCedula(values[0]),values[1],values[2],values[3],values[4],values[5],Integer.parseInt(values[6]));
                 System.out.println(cliente.getApellido());
             }
             count +=1;
@@ -199,7 +214,7 @@ public class Global {
         while ((line = rd.readLine()) != null){
             if (count > 0){
                 String[] values = line.split(",");
-                Habitacion habitacion = new Habitacion(values[0], values[1], values[2]);
+                Habitacion habitacion = new Habitacion(Integer.parseInt(values[0]), values[1], values[2]);
                 //listahabitaciones.InsertFinal(habitacion);
                 //listahabitaciones.print();
                 
