@@ -1,6 +1,8 @@
 
 package Main;
 
+
+//relative paths
 //"./src/CSV/Booking_hotel-Reservas.csv"
 //"./src/CSV/Booking_hotel-Historico.csv"
 //"./src/CSV/Booking_hotel-Habitaciones.csv"
