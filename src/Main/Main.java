@@ -14,8 +14,10 @@ public class Main {
     global.llenararbollistas();
     //global.getArbollistas().inOrden(global.getArbollistas().getRoot());
     FuncionExcel func = new FuncionExcel();
-    System.out.println(func.ReadExcel("reservas", 1, 2));
-    func.LlenarCliente();
+    System.out.println(func.ReadExcel("reservas", 1, 7));
+    //func.LlenarCliente();
+    func.LeerExcelReservas("./src/CSV/Booking_hotel-Reservas.csv");
+    System.out.println("lleno");
     
     }   
 }

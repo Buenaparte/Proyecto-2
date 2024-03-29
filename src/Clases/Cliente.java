@@ -49,7 +49,7 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public int getCedula() {
+    public double getCedula() {
         return Cedula;
     }
 

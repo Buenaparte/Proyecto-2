@@ -77,9 +77,14 @@ public class Lista {
      
     public void print(){
         NodoLista pointer = getHead();
-        while (pointer != null) {
+        if (!Vacio()){
+            while (pointer != null) {
             System.out.println("[ "+pointer.getElement() + " ]");
             pointer = pointer.getSiguiente();
+            }
+        }
+        else{
+            System.out.println("Lista vacia");
         }
     }
     
