@@ -1,6 +1,6 @@
 package EDD;
 
-import Clases.Cliente;
+import Clases.ClienteReservas;
 
 public class BST {
     private Nodo root;
@@ -17,7 +17,7 @@ public class BST {
         this.root = root;
     }
         
-    public void insertCedula(Cliente element, Nodo pointer) {
+    public void insertCedula(ClienteReservas element, Nodo pointer) {
         Nodo nodo = new Nodo(element);
         if (isEmpty()) {
             setRoot(nodo);
@@ -41,7 +41,7 @@ public class BST {
         }
     }
     
-    public void insertSimple(Cliente element) {
+    public void insertSimple(ClienteReservas element) {
         Nodo nodo = new Nodo(element);
         if (isEmpty()) {
             setRoot(nodo);
@@ -85,7 +85,7 @@ public class BST {
         return nodo;
     }
     
-    public Cliente searchCedula(int element, Nodo raiz){
+    public ClienteReservas searchCedula(int element, Nodo raiz){
      if( raiz != null && element != raiz.getElement().getCedula()){
       searchCedula(element,raiz.getLeftSon());
       searchCedula(element,raiz.getRightSon());

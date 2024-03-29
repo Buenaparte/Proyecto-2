@@ -1,18 +1,17 @@
 package Clases;
 
-public class Cliente {
-    private String Nombre,Apellido,genero,correo,llegada,celular;
-    private int numerohabitacion;
+public class ClienteHistorico {
+    private String Nombre,Apellido,genero,correo,llegada;
+    private int Cedula,numerohabitacion;
 
-    public Cliente(int numerohabitacion, String Nombre, String Apellido,String correo, String genero, String celular,String llegada) {
-        this.numerohabitacion = numerohabitacion;
+    public ClienteHistorico(int cedula, String Nombre, String Apellido,String correo, String genero, String llegada, int numerohabitacion) {
+        this.Cedula = cedula;
         this.Nombre = Nombre;
         this.Apellido = Apellido;   
         this.correo = correo;
         this.genero = genero;
-        this.celular = celular;
         this.llegada = llegada;
-        
+        this.numerohabitacion = numerohabitacion;
     }
 
     public String getNombre() {
@@ -47,14 +46,14 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public String getCelular() {
-        return celular;
+    public int getCedula() {
+        return Cedula;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setCedula(int Cedula) {
+        this.Cedula = Cedula;
     }
-
+    
     public String getLlegada() {
         return llegada;
     }
@@ -70,5 +69,6 @@ public class Cliente {
     public void setNumerohabitacion(int numerohabitacion) {
         this.numerohabitacion = numerohabitacion;
     }
+    
     
 }
