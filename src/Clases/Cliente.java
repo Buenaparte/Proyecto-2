@@ -1,21 +1,18 @@
 package Clases;
-import java.time.LocalDate;
 
 public class Cliente {
-    private String Nombre,Apellido,genero,correo,tipohabitacion;
-    private int Cedula,celular;
-    private LocalDate llegada,salida;
+    private String Nombre,Apellido,genero,correo,llegada,celular;
+    private int numerohabitacion;
 
-    public Cliente(String Nombre, String Apellido, String genero, String correo,String tipohabitacion,  int Cedula, int celular) {
+    public Cliente(int numerohabitacion, String Nombre, String Apellido,String correo, String genero, String celular,String llegada) {
+        this.numerohabitacion = numerohabitacion;
         this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.genero = genero;
+        this.Apellido = Apellido;   
         this.correo = correo;
-        this.tipohabitacion = tipohabitacion;
-        this.Cedula = Cedula;
+        this.genero = genero;
         this.celular = celular;
-        this.llegada = null;
-        this.salida = null;
+        this.llegada = llegada;
+        
     }
 
     public String getNombre() {
@@ -50,53 +47,28 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public int getCedula() {
-        return Cedula;
-    }
-
-    public void setCedula(int Cedula) {
-        this.Cedula = Cedula;
-    }
-
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
-    public LocalDate getLlegada() {
+    public String getLlegada() {
         return llegada;
     }
 
-    public void setLlegada(LocalDate llegada) {
+    public void setLlegada(String llegada) {
         this.llegada = llegada;
     }
 
-    public LocalDate getSalida() {
-        return salida;
+    public int getNumerohabitacion() {
+        return numerohabitacion;
     }
 
-    public String getTipohabitacion() {
-        return tipohabitacion;
-    }
-
-    public void setTipohabitacion(String tipohabitacion) {
-        this.tipohabitacion = tipohabitacion;
-    }
-        
-    public void setSalida(LocalDate salida) {
-        this.salida = salida;
+    public void setNumerohabitacion(int numerohabitacion) {
+        this.numerohabitacion = numerohabitacion;
     }
     
-    public void creacionfechasiniciales(int año, int mes, int dia){
-     LocalDate date = LocalDate.of(año, mes, dia);
-     setLlegada(date);
-    }
-    
-     public void creacionfechasfinales(int año, int mes, int dia){
-     LocalDate date = LocalDate.of(año, mes, dia);
-     setSalida(date);
-    } 
 }

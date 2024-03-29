@@ -1,7 +1,7 @@
 
 package EDD;
 
-import Clases.Cliente;
+import Clases.Habitacion;
 import EDD.NodoLista;
 
 public class Lista {
@@ -39,7 +39,7 @@ public class Lista {
         this.head = head;
     }
     
-    public void InsertFinal(Cliente element){
+    public void InsertFinal(Habitacion element){
       NodoLista nodo = new NodoLista(element);
         if (Vacio()){
           setHead(nodo);
@@ -53,13 +53,13 @@ public class Lista {
      size++;
     }
 
-     public Object DeleteFinal(){
+    public Object DeleteFinal(){
          if (Vacio()){
             System.out.println("No hay nada que eleminar");
         }else{
            NodoLista aux = getHead();
            while(aux.getSiguiente().getSiguiente() != null){
-             aux = aux.getSiguiente();
+            aux = aux.getSiguiente();
            } 
            NodoLista aux2 = aux.getSiguiente();
            aux.setSiguiente(null);
@@ -68,14 +68,20 @@ public class Lista {
            return aux2.getElement();
          }
          return null;
-     }
+    }
     
      
-     public void comparacion(){
-         
-     }
+    public Habitacion recorrer(int contador){
+      NodoLista pointer = getHead();
+      int a = 0;
+        while (pointer.getSiguiente() != null && a < contador) {
+            pointer = pointer.getSiguiente();
+            a++;
+        }
+      return pointer.getElement();
+    }
      
-     public void print(){
+    public void print(){
         NodoLista pointer = getHead();
         while (pointer != null) {
             System.out.println("[ "+pointer.getElement() + " ]");

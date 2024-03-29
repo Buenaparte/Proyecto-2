@@ -1,18 +1,18 @@
 
 package EDD;
 
-import Clases.Cliente;
+import Clases.Habitacion;
 
 public class NodoLista {
-    private Cliente element;
+    private Habitacion element;
     private NodoLista siguiente;
 
-    public NodoLista(Cliente element) {
+    public NodoLista(Habitacion element) {
         this.element = element;
         this.siguiente = null;
     }
 
-    public Object getElement() {
+    public Habitacion getElement() {
         return element;
     }
 
@@ -20,7 +20,7 @@ public class NodoLista {
         return siguiente;
     }
 
-    public void setElement(Cliente element) {
+    public void setElement(Habitacion element) {
         this.element = element;
     }
 
