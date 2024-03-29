@@ -156,12 +156,48 @@ public class FuncionExcel {
 
     }
     
+    public void LeerExcelHistorico(String path){
+        Lista listaHistorico = new Lista();
+        try {
+            File archivo = new File(path);
+            FileReader lector = new FileReader(archivo);
+            try (java.io.BufferedReader buffer = new BufferedReader(lector)) {
+                
+                String linea;                  
+                buffer.readLine();
+                while ((linea = buffer.readLine()) != null ) {
+                    String[] datosCliente = linea.split(";");
+                    if(datosCliente.length == 9){
+                        String ci = datosCliente[0];
+                        ci = ci.replace(".", "");
+                        String name = datosCliente[1];
+                        String lname = datosCliente[2];
+                        String correo = datosCliente[3];
+                        String genero = datosCliente[4];
+                        String tipohab = datosCliente[5];
+                        String tlf = datosCliente[6];
+                        String datellegada = datosCliente[7];
+                        String numHab = datosCliente[8];
+                        if( !ci.equals(" ") &&!name.equals(" ")&& !lname.equals(" ")&& !correo.equals(" ")&& !genero.equals(" ")&& !tipohab.equals(" ")&& !tlf.equals(" ")&& !datellegada.equals(" ")&& !numHab.equals(" ")){
+                            int intCI = Integer.parseInt(ci);
+                            int intNumHab = Integer.parseInt(numHab);
+
+                            //ClienteHistorico nuevoClienteH = new Cliente(name, lname,genero,correo,tipohab,intCI,tlf,datellegada,intNumHab);
+                            //listaHistorico.InsertFinal(nuevoClienteH);
+                        }
+                    }                     
+                }                 listaHistorico.print();
+
+            }
+        }
+        catch(IOException ioe) {
+            System.out.println("Archivo invalido");
+          ioe.printStackTrace();
+        }
+
+    }
     
     
     
     
 }
-
-    
-
-
