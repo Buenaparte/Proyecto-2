@@ -62,56 +62,59 @@ public class Global {
         Global.status = status;
     }
     
-    public  Lista getListahabitaciones() {
+    public static  Lista getListahabitaciones() {
         return listahabitaciones;
     }
 
-    public  void setListahabitaciones(Lista listahabitaciones) {
-        this.listahabitaciones = listahabitaciones;
+    public static void setListahabitaciones(Lista listahabitaciones) {
+        Global.listahabitaciones = listahabitaciones;
     }
 
-    public  BST getArbol() {
+    public static BST getArbol() {
         return arbol;
     }
 
-    public  void setArbol(BST arbol) {
-        this.arbol = arbol;
+    public static void setArbol(BST arbol) {
+        Global.arbol = arbol;
     }
 
-    public  Hashtable getClientesarray() {
+    public static Hashtable getClientesarray() {
         return clientesarray;
     }
 
-    public  void setClientesarray(Hashtable clientesarray) {
-        this.clientesarray = clientesarray;
+    public static void setClientesarray(Hashtable clientesarray) {
+        Global.clientesarray = clientesarray;
     }
 
-    public  Lista2 getListaprevias() {
+    public static Lista2 getListaprevias() {
         return listaprevias;
     }
 
-    public  void setListaprevias(Lista2 listaprevias) {
-        this.listaprevias = listaprevias;
+    public static void setListaprevias(Lista2 listaprevias) {
+        Global.listaprevias = listaprevias;
     }
 
-    public BST2 getArbollistas() {
+    public static BST2 getArbollistas() {
         return arbollistas;
     }
 
-    public  void setArbollistas(BST2 arbollistas) {
-        this.arbollistas = arbollistas;
+    public static void setArbollistas(BST2 arbollistas) {
+        Global.arbollistas = arbollistas;
     }
  
-   public void llenararbollistas(){
-     Lista lista =  new Lista();
-     getArbollistas().insertLista(lista, getArbollistas().getRoot());
+   public static BST2 llenararbollistas(){
+     Lista2 lista =  new Lista2();
+     BST2 bst2 = new BST2();
+     bst2.insertLista(lista, bst2.getRoot());
      int a = 1;
-     while (a< 299){
-      Lista lista2 = new Lista();
-      lista2.setKey(a+ 1);
-      getArbollistas().insertLista(lista2, getArbollistas().getRoot()); 
+     while (a< 300){
+      Lista2 lista2 = new Lista2();
+      lista2.setKey(a+1);
+      bst2.insertLista(lista2, bst2.getRoot()); 
       a++;
      }
+     bst2.preOrden2(bst2.getRoot());
+     return bst2;
    }  
     
    public void busquedacedula(int cedula){
@@ -124,13 +127,9 @@ public class Global {
        System.out.println(getClientesarray().getArray()[index].getNombre());
    } 
    
-   /*public void busquedacliente(String nombre, String apellido){
-       int index = getClientesarray().Crearindex(nombre, apellido);
-       System.out.println(getClientesarray().getArray()[index].getNombre());
-   } */
-
-    public static void reservations(){
-    String line = "";
+    public static BST reservations(){
+     BST bst = new BST();
+     String line = "";
     int count = 0;
     try{
         String path = Global.getReservations().getAbsolutePath();
@@ -140,7 +139,7 @@ public class Global {
             if (count > 0){
                 String[] values = line.split(",");
                 ClienteReservas reserva = new ClienteReservas(convertirCedula(values[0]),values[1],values[2],values[3],values[4],values[5],values[6],values[7],values[8]);
-                //arbol.
+                bst.insertCedula(reserva, bst.getRoot());
                 
             }
             count +=1;
@@ -149,10 +148,12 @@ public class Global {
     } catch(Exception e){
         JOptionPane.showMessageDialog(null, "Algo esta mal con el archivo de reservaciones" + e);
     }
+    return bst;
 }
     
-    public static void estado(){
-    String line = "";
+    public static Hashtable estado(){
+     Hashtable ha= new Hashtable();
+     String line = "";
     int count = 0;
     try{
         String path = Global.getStatus().getAbsolutePath();
@@ -163,7 +164,7 @@ public class Global {
                 String[] values = line.split(",");
                 Cliente cliente = new Cliente(Integer.parseInt(values[0]),values[1],values[2],values[3],values[4],values[5],values[6]);
                 System.out.println(cliente);
-                //clientesarray.Insert(cliente);   
+                ha.Insert(cliente);   
             }
             count +=1;
         }
@@ -171,6 +172,7 @@ public class Global {
     } catch(Exception e){
         JOptionPane.showMessageDialog(null, "Algo esta mal con el archivo de Estado" + e);
     }
+    return ha;
 }
     public static int convertirCedula(String cedulaString) {
         // Reemplazar todos los puntos de la cédula por una cadena vacía
@@ -184,6 +186,9 @@ public class Global {
 }
     
     public static void historico(){
+     BST2 bst2 = Global.llenararbollistas();
+     //bst2.preOrden(bst2.getRoot());
+     //System.out.println(bst2.getRoot());
     String line = "";
     int count = 0;
     try{
@@ -194,7 +199,8 @@ public class Global {
             if (count > 0){
                 String[] values = line.split(",");
                 ClienteHistorico cliente = new ClienteHistorico(convertirCedula(values[0]),values[1],values[2],values[3],values[4],values[5],Integer.parseInt(values[6]));
-                System.out.println(cliente.getApellido());
+                //System.out.println(bst2.getRoot());
+                bst2.Insertarclientes(cliente, bst2.getRoot());
             }
             count +=1;
         }
@@ -204,8 +210,9 @@ public class Global {
     }
 }
     
-    public static void habitaciones(){
-    String line = "";
+    public static Lista habitaciones(){
+     Lista lista = new Lista();
+     String line = "";
     int count = 0;
     try{
         String path = Global.getRooms().getAbsolutePath();
@@ -215,10 +222,10 @@ public class Global {
             if (count > 0){
                 String[] values = line.split(",");
                 Habitacion habitacion = new Habitacion(Integer.parseInt(values[0]), values[1], values[2]);
-                //listahabitaciones.InsertFinal(habitacion);
-                //listahabitaciones.print();
+                lista.InsertFinal(habitacion);
+                //lista.print();
                 
-                System.out.println(habitacion.getNumero());
+                //System.out.println(habitacion.getNumero());
             }
             count +=1;
         }
@@ -226,6 +233,7 @@ public class Global {
     } catch(Exception e){
         JOptionPane.showMessageDialog(null, "Algo esta mal con el archivo de habitaciones" + e);
     }
+    return lista;
 }
     
     

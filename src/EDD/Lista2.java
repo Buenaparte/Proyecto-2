@@ -1,7 +1,7 @@
 
 package EDD;
 
-import Clases.ClienteReservas;
+import Clases.ClienteHistorico;
 
 //arbol
 public class Lista2 {
@@ -39,7 +39,7 @@ public class Lista2 {
         this.head = head;
     }
     
-    public void InsertFinal(ClienteReservas element){
+    public void InsertFinal(ClienteHistorico element){
       NodoLista2 nodo = new NodoLista2(element);
         if (Vacio()){
           setHead(nodo);
@@ -71,7 +71,7 @@ public class Lista2 {
     }
     
      
-    public ClienteReservas recorrer(int contador){
+    public ClienteHistorico recorrer(int contador){
       NodoLista2 pointer = getHead();
       int a = 0;
         while (pointer.getSiguiente() != null && a < contador) {
@@ -84,7 +84,7 @@ public class Lista2 {
     public void print(){
         NodoLista2 pointer = getHead();
         while (pointer != null) {
-            System.out.println("[ "+pointer.getElement() + " ]");
+            System.out.println("[ "+pointer.getElement().getApellido() + " ]");
             pointer = pointer.getSiguiente();
         }
     }

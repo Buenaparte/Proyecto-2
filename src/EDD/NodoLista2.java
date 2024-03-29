@@ -1,18 +1,18 @@
 
 package EDD;
 
-import Clases.ClienteReservas;
+import Clases.ClienteHistorico;
 
 public class NodoLista2 {
-    private ClienteReservas element;
+    private ClienteHistorico element;
     private NodoLista2 siguiente;
 
-    public NodoLista2(ClienteReservas element) {
+    public NodoLista2(ClienteHistorico element) {
         this.element = element;
         this.siguiente = null;
     }
 
-    public ClienteReservas getElement() {
+    public ClienteHistorico getElement() {
         return element;
     }
 
@@ -20,7 +20,7 @@ public class NodoLista2 {
         return siguiente;
     }
 
-    public void setElement(ClienteReservas element) {
+    public void setElement(ClienteHistorico element) {
         this.element = element;
     }
 

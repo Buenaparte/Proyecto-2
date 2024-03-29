@@ -1,20 +1,20 @@
 package EDD;
 
 public class NodoBst2 {
- private Lista element;
+ private Lista2 element;
  private NodoBst2 leftSon, rightSon;
 
-    public NodoBst2(Lista element) {
+    public NodoBst2(Lista2 element) {
         this.element = element;
         this.leftSon = null;
         this.rightSon = null;
     }
 
-    public Lista getElement() {
+    public Lista2 getElement() {
         return element;
     }
 
-    public void setElement(Lista element) {
+    public void setElement(Lista2 element) {
         this.element = element;
     }
 
