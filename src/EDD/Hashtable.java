@@ -8,10 +8,9 @@ public class Hashtable {
  private Cliente cliente;
 
     public Hashtable() {
-        this.array = new Cliente [1002];
-        this.cliente = null;
+        this.array = new Cliente[10000];
     }
-
+  
     public Cliente[] getArray() {
         return array;
     }
@@ -29,11 +28,6 @@ public class Hashtable {
     }
 
     public void Insert (Cliente cliente){
-         if (searchSpace()== -1){
-         Cliente[] array2 = copyArray();
-         array2[array2.length-1] = cliente;
-         setArray(array2);
-         }else{
           int index = Crearindex(cliente.getNombre(), cliente.getApellido());
           if (getArray()[index] == null){
            getArray()[index] = cliente;   
@@ -41,7 +35,7 @@ public class Hashtable {
              System.out.println("se repitio");   
           }
          }             
-        } 
+         
      
       public int Crearindex(String nombre, String apellido){
          int nombreh = 0;
@@ -56,7 +50,6 @@ public class Hashtable {
           apellidoh += b;
          }
          index = nombreh + apellidoh;
-         index/= apellidoh/100;
          return index;
      } 
     

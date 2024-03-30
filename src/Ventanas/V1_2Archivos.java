@@ -4,6 +4,9 @@
  */
 package Ventanas;
 
+import EDD.BST;
+import Clases.ClienteReservas;
+import EDD.Nodo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -114,9 +117,19 @@ public class V1_2Archivos extends javax.swing.JFrame {
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
         Global.historico();
         Global.setListahabitaciones(Global.habitaciones());
-        Global.setClientesarray(Global.estado());
+        Global.estado();
         Global.setArbol(Global.reservations());
        
+        //Global.getArbollistas().Bucsarhistorial(67, Global.getArbollistas().getRoot()).print();
+        
+        //int index = Global.getClientesarray().Crearindex("Chrissy", "Abbis");
+        //System.out.println(index);
+        //System.out.println(Global.getClientesarray().getArray()[1222]);
+        //System.out.println(Global.getClientesarray().getArray()[index].getNumerohabitacion());
+         
+       //Global.getArbol().searchCedula(        18272608, Global.getArbol().getRoot());
+        //System.out.println(Global.getArbol().getBuscado().getElement().getApellido());
+        
         V2Menu ventana = new V2Menu();
         ventana.setVisible(true);
         this.dispose();

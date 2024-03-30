@@ -17,19 +17,20 @@ public class Global {
  private static BST arbol;
  private static BST2 arbollistas;
  private static Hashtable clientesarray; 
+ private static int[] habitaciones;
  private static File reservations; 
  private static File rooms; 
  private static File historic; 
  private static File status; 
- 
-    public Global() {
-           this.listahabitaciones = new Lista();
-           this.arbol = new BST();
-           this.arbollistas = new BST2();
-           this.clientesarray = new Hashtable();
-           this.listaprevias = new Lista2();
-       }
 
+    public static int[] getHabitaciones() {
+        return habitaciones;
+    }
+
+    public static void setHabitaciones(int[] habitaciones) {
+        Global.habitaciones = habitaciones;
+    }
+    
     public static File getReservations() {
         return reservations;
     }
@@ -117,10 +118,43 @@ public class Global {
      return bst2;
    }  
     
-   public void busquedacedula(int cedula){
-   ClienteReservas cl = this.arbol.searchCedula(cedula, this.arbol.getRoot());
-    System.out.println("nombre: "+cl.getNombre()+" Apellido: "+cl.getApellido()+" Email: "+cl.getCorreo()+" genero: "+cl.getGenero()+" Tipo de habitacion: "+cl.getTipohabitacion()+" celular: "+cl.getCelular()+" Llegada: "+cl.getLlegada()+" Salida: "+cl.getSalida());
+   public static void cheackin(int cedula){
+    Global.getArbol().searchCedula(cedula, Global.getArbol().getRoot());
+     ClienteReservas cl = Global.getArbol().getBuscado().getElement();
+     int a = 0;
+     int b = 0;
+     if(cl.getTipohabitacion() == "simple"){
+         a = 101;
+     }else if(cl.getTipohabitacion() == "doble"){
+         a = 225;
+     }else if(cl.getTipohabitacion() == "triple"){
+         a = 266;
+     }else{
+         a = 301;
+     }
+       for (int i = 1; i < a; i++) {
+         if( Global.getHabitaciones()[i] != 1 ){
+           b =i;
+           break;
+         }
+       }
+    Habitacion h = Global.getListahabitaciones().recorrer(b);
+    Cliente cd = new Cliente(h.getNumero(),cl.getNombre(),cl.getApellido(),cl.getCorreo(),cl.getGenero(),cl.getCelular(),"11/2/2022");
+    Global.getClientesarray().Insert(cd);
    }
+   
+   public static void Checkout(String nombre, String Apellido){
+     int i = Global.getClientesarray().Crearindex(nombre, Apellido);
+     Cliente cl = Global.getClientesarray().getArray()[i]; 
+     Global.getHabitaciones()[cl.getNumerohabitacion()] = 0;
+     ClienteHistorico cd = new ClienteHistorico(0,cl.getNombre(),cl.getApellido(),cl.getCorreo(),cl.getGenero(),cl.getLlegada(),cl.getNumerohabitacion());
+     Global.getArbollistas().Insertarclientes(cd, Global.getArbollistas().getRoot());
+   }
+   
+   //public ClienteReservas busquedacedula(int cedula){
+   //ClienteReservas cl = this.arbol.searchCedula(cedula, this.arbol.getRoot());
+   //return cl;
+   //}
    
    public void busquedacliente(String nombre, String apellido){
        int index = getClientesarray().Crearindex(nombre, apellido);
@@ -151,28 +185,36 @@ public class Global {
     return bst;
 }
     
-    public static Hashtable estado(){
+     public static void estado(){
+     int[] array = new int[300];
      Hashtable ha= new Hashtable();
      String line = "";
     int count = 0;
     try{
         String path = Global.getStatus().getAbsolutePath();
         BufferedReader rd = new BufferedReader(new FileReader(path));
-        
+        String habprev = "";
         while ((line = rd.readLine()) != null){
             if (count > 0){
                 String[] values = line.split(",");
+                if (values[0] == ""){
+                    values[0] = habprev;
+                }
+                habprev = values[0];
                 Cliente cliente = new Cliente(Integer.parseInt(values[0]),values[1],values[2],values[3],values[4],values[5],values[6]);
-                System.out.println(cliente);
+                cliente.mostrar();
+                array[cliente.getNumerohabitacion()] = 1;
                 ha.Insert(cliente);   
             }
             count +=1;
         }
         rd.close();
+        Global.setClientesarray(ha);
     } catch(Exception e){
         JOptionPane.showMessageDialog(null, "Algo esta mal con el archivo de Estado" + e);
     }
-    return ha;
+    Global.setClientesarray(ha);
+    Global.setHabitaciones(array);
 }
     public static int convertirCedula(String cedulaString) {
         // Reemplazar todos los puntos de la cédula por una cadena vacía
@@ -199,17 +241,17 @@ public class Global {
             if (count > 0){
                 String[] values = line.split(",");
                 ClienteHistorico cliente = new ClienteHistorico(convertirCedula(values[0]),values[1],values[2],values[3],values[4],values[5],Integer.parseInt(values[6]));
-                //System.out.println(bst2.getRoot());
                 bst2.Insertarclientes(cliente, bst2.getRoot());
             }
             count +=1;
         }
-        bst2.preOrden2(bst2.getRoot());
+        //bst2.preOrden2(bst2.getRoot());
         //bst2.getRoot().getElement().print();
         rd.close();
     } catch(Exception e){
         JOptionPane.showMessageDialog(null, "Algo esta mal con el archivo de Estado" + e);
     }
+    Global.setArbollistas(bst2);
 }
     
     public static Lista habitaciones(){
@@ -225,6 +267,7 @@ public class Global {
                 String[] values = line.split(",");
                 Habitacion habitacion = new Habitacion(Integer.parseInt(values[0]), values[1], values[2]);
                 lista.InsertFinal(habitacion);
+                //System.out.println("la patata");
                 //lista.print();
                 
                 //System.out.println(habitacion.getNumero());

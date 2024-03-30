@@ -96,11 +96,18 @@ public class BST2 {
        
        
      public void Insertarclientes(ClienteHistorico element, NodoBst2 raiz){
-     if( element.getNumerohabitacion() != raiz.getElement().getKey() && raiz.getRightSon() != null){
-         Insertarclientes(element,raiz.getRightSon());
+     while( element.getNumerohabitacion() != raiz.getElement().getKey() && raiz.getRightSon() != null){
+         raiz = raiz.getRightSon();
      }
      raiz.getElement().InsertFinal(element);
-    }   
+    }
+     
+     public Lista2 Bucsarhistorial (int element, NodoBst2 raiz){
+      while( element != raiz.getElement().getKey() && raiz.getRightSon() != null){
+         raiz = raiz.getRightSon();
+     }
+      return raiz.getElement();   
+     } 
        
         public void preOrden(NodoBst2 raiz) {
         if (raiz != null) {
@@ -113,7 +120,6 @@ public class BST2 {
             public void preOrden2(NodoBst2 raiz) {
         if (raiz != null) {
            raiz.getElement().print();
-            preOrden2(raiz.getLeftSon());
             preOrden2(raiz.getRightSon());
         }
     }    
