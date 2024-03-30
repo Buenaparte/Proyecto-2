@@ -96,12 +96,9 @@ public class BST2 {
        
        
      public void Insertarclientes(ClienteHistorico element, NodoBst2 raiz){
-         System.out.println("la raiz original: "+ raiz.getElement().getKey());
-     if( element.getNumerohabitacion() != raiz.getElement().getKey() && raiz != null){
-          Insertarclientes(element,raiz.getLeftSon());
+     if( element.getNumerohabitacion() != raiz.getElement().getKey() && raiz.getRightSon() != null){
          Insertarclientes(element,raiz.getRightSon());
      }
-         System.out.println("se acabo ciclo");
      raiz.getElement().InsertFinal(element);
     }   
        
@@ -115,7 +112,7 @@ public class BST2 {
         
             public void preOrden2(NodoBst2 raiz) {
         if (raiz != null) {
-           System.out.println("[ " + raiz.getElement().getKey() + " ]");
+           raiz.getElement().print();
             preOrden2(raiz.getLeftSon());
             preOrden2(raiz.getRightSon());
         }

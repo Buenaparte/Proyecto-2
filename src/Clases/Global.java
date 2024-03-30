@@ -204,6 +204,8 @@ public class Global {
             }
             count +=1;
         }
+        bst2.preOrden2(bst2.getRoot());
+        //bst2.getRoot().getElement().print();
         rd.close();
     } catch(Exception e){
         JOptionPane.showMessageDialog(null, "Algo esta mal con el archivo de Estado" + e);
