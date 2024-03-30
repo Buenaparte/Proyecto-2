@@ -112,10 +112,10 @@ public class V1_2Archivos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
-        Global.historico();
-        Global.setListahabitaciones(Global.habitaciones());
-        Global.setClientesarray(Global.estado());
-        Global.setArbol(Global.reservations());
+        //Global.historico();
+        Global.habitaciones();
+        Global.estado();
+        //Global.setArbol(Global.reservations());
        
         V2Menu ventana = new V2Menu();
         ventana.setVisible(true);

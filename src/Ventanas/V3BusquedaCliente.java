@@ -4,21 +4,33 @@
  */
 package Ventanas;
 
-import java.awt.Color;
 import Clases.Global;
+import EDD.Hashtable;
+
+import Clases.Cliente;
+import java.awt.Color;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 /**
  *
  * @author Jose
  */
 public class V3BusquedaCliente extends javax.swing.JFrame {
-
+    DefaultTableModel mt = new DefaultTableModel();
     /**
      * Creates new form V1
      */
     public V3BusquedaCliente() {
+        Color color = new Color(0,169,105);
+        String ids[] = {"Nombre", "Apellido", "Email", "Genero", "Celular", "Llegada" };
+        mt.setColumnIdentifiers(ids);
         initComponents();
         setTitle("Hotel Ávila");
         setResizable(false);
+        tabla.setModel(mt);
+        
+        tabla.setBackground(color);
     }
 
     /**
@@ -38,7 +50,7 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         panelRound2 = new Clases.PanelRound();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         apellido = new javax.swing.JTextField();
         buscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -81,7 +93,7 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
                 volverActionPerformed(evt);
             }
         });
-        jPanel2.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
+        jPanel2.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
         panelRound2.setBackground(new java.awt.Color(0, 169, 105));
         panelRound2.setRoundBottomLeft(10);
@@ -96,20 +108,21 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
 
         jPanel2.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 130, 130, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setBackground(new java.awt.Color(0, 169, 105));
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 440, 50));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 510, 70));
 
         apellido.setBackground(new java.awt.Color(0, 169, 105));
         apellido.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,14 +136,20 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         buscar.setBackground(new java.awt.Color(0, 169, 105));
         buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4_1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/busquedaclientes.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -146,6 +165,29 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apellidoActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        String nombre = this.nombre.getText();
+        nombre = nombre.toUpperCase().charAt(0)+ nombre.substring(1, nombre.length()).toLowerCase();
+        String apellido = this.apellido.getText();
+        apellido = apellido.toUpperCase().charAt(0)+ apellido.substring(1, apellido.length()).toLowerCase();
+        System.out.println("apellido = " + apellido);
+        System.out.println("nombre = " + nombre);
+        
+        
+        Hashtable hash = Global.getClientesarray();
+        int index = hash.Crearindex(nombre, apellido);
+        System.out.println(index);
+        Cliente cliente2 = hash.getArray()[index];
+        cliente2.mostrar();
+        
+        
+        
+        
+        
+        Cliente cliente = new Cliente(55, "Jose", "Fernandez", "jose@", "masc", "04140239093", "19/02/2024");
+        mt.addRow(new Object[] {cliente.getNombre(), cliente.getApellido(), cliente.getCorreo(), cliente.getGenero(), cliente.getCelular(), cliente.getLlegada()});
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,10 +263,10 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField nombre;
     private Clases.PanelRound panelRound1;
     private Clases.PanelRound panelRound2;
+    private javax.swing.JTable tabla;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
