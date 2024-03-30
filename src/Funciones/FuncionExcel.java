@@ -6,6 +6,7 @@
 package Funciones;
 
 import Clases.Cliente;
+import Clases.ClienteHistorico;
 import Clases.Habitacion;
 import EDD.Lista;
 import EDD.NodoLista;
@@ -159,6 +160,7 @@ public class FuncionExcel {
     }
     
     public void LeerExcelHistorico(String path){
+        //Cual es la lista de cliente historico
         Lista listaHistorico = new Lista();
         try {
             File archivo = new File(path);
@@ -169,26 +171,68 @@ public class FuncionExcel {
                 buffer.readLine();
                 while ((linea = buffer.readLine()) != null ) {
                     String[] datosCliente = linea.split(";");
-                    if(datosCliente.length == 9){
+                    if(datosCliente.length == 7){
                         String ci = datosCliente[0];
                         ci = ci.replace(".", "");
                         String name = datosCliente[1];
                         String lname = datosCliente[2];
                         String correo = datosCliente[3];
                         String genero = datosCliente[4];
-                        String tipohab = datosCliente[5];
-                        String tlf = datosCliente[6];
-                        String datellegada = datosCliente[7];
-                        String numHab = datosCliente[8];
-                        if( !ci.equals(" ") &&!name.equals(" ")&& !lname.equals(" ")&& !correo.equals(" ")&& !genero.equals(" ")&& !tipohab.equals(" ")&& !tlf.equals(" ")&& !datellegada.equals(" ")&& !numHab.equals(" ")){
+                        String datellegada = datosCliente[5];
+                        String numHab = datosCliente[6];
+                        if( !ci.equals(" ") &&!name.equals(" ")&& !lname.equals(" ")&& !correo.equals(" ")&& !genero.equals(" ")&& !datellegada.equals(" ")&& !numHab.equals(" ")){
                             int intCI = Integer.parseInt(ci);
                             int intNumHab = Integer.parseInt(numHab);
 
-                            //ClienteHistorico nuevoClienteH = new Cliente(name, lname,genero,correo,tipohab,intCI,tlf,datellegada,intNumHab);
+                            ClienteHistorico nuevoClienteH = new ClienteHistorico(intCI,name,lname,correo,genero,datellegada,intNumHab);
                             //listaHistorico.InsertFinal(nuevoClienteH);
                         }
                     }                     
                 }                 listaHistorico.print();
+
+            }
+        }
+        catch(IOException ioe) {
+            System.out.println("Archivo invalido");
+          ioe.printStackTrace();
+        }
+
+    }
+    
+    
+    public void LeerExcelEstado(String path){
+        //cual es la lista de ClienteEstado
+        //Lista listaEstado = new Lista();
+        try {
+            File archivo = new File(path);
+            FileReader lector = new FileReader(archivo);
+            try (java.io.BufferedReader buffer = new BufferedReader(lector)) {
+                
+                String linea;                  
+                buffer.readLine();
+                while ((linea = buffer.readLine()) != null ) {
+                    String[] datosCliente = linea.split(";");
+                    if(datosCliente.length == 7){
+                        String numHab = datosCliente[0];
+                        String name = datosCliente[1];
+                        String lname = datosCliente[2];
+                        String correo = datosCliente[3];
+                        String genero = datosCliente[4];
+                        String tlf = datosCliente[5];
+                        String datellegada = datosCliente[6];
+                        if( !name.equals(" ")&& !lname.equals(" ")&& !correo.equals(" ")&& !genero.equals(" ")&& !datellegada.equals(" ")){
+                            //0 significa que no tenia habitacion asignada en el excel
+                            if(numHab.equals(" ")){
+                                numHab="0";
+                            }
+                            int intNumHab = Integer.parseInt(numHab);
+                            //ClienteEstado nuevoClienteEstado = new ClienteEstado(numHab,name,lname,correo,genero,tlf,datellegada);
+                            //listaEstado.InsertFinal(nuevoClienteEstado);
+                            
+                            
+                        }
+                    }                     
+                }                 //listaEstado.print();
 
             }
         }
