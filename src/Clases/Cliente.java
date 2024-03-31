@@ -1,20 +1,18 @@
 package Clases;
-import java.time.LocalDate;
 
 public class Cliente {
-    private String Nombre,Apellido,genero,correo;
-    private int Cedula,celular;
-    private LocalDate llegada,salida;
+    private String Nombre,Apellido,genero,correo,llegada,celular;
+    private int numerohabitacion;
 
-    public Cliente(String Nombre, String Apellido, String genero, String correo, int Cedula, int celular, LocalDate llegada, LocalDate salida) {
+    public Cliente(int numerohabitacion, String Nombre, String Apellido,String correo, String genero, String celular,String llegada) {
+        this.numerohabitacion = numerohabitacion;
         this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.genero = genero;
+        this.Apellido = Apellido;   
         this.correo = correo;
-        this.Cedula = Cedula;
+        this.genero = genero;
         this.celular = celular;
         this.llegada = llegada;
-        this.salida = salida;
+        
     }
 
     public String getNombre() {
@@ -49,37 +47,33 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public int getCedula() {
-        return Cedula;
-    }
-
-    public void setCedula(int Cedula) {
-        this.Cedula = Cedula;
-    }
-
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
-    public LocalDate getLlegada() {
+    public String getLlegada() {
         return llegada;
     }
 
-    public void setLlegada(LocalDate llegada) {
+    public void setLlegada(String llegada) {
         this.llegada = llegada;
     }
 
-    public LocalDate getSalida() {
-        return salida;
+    public int getNumerohabitacion() {
+        return numerohabitacion;
     }
 
-    public void setSalida(LocalDate salida) {
-        this.salida = salida;
+    public void setNumerohabitacion(int numerohabitacion) {
+        this.numerohabitacion = numerohabitacion;
     }
     
+      public void mostrar(){
+        System.out.println("Nombre = " + Nombre+"Apellido = " + Apellido+ "Genero = " + genero+"Correo = " + correo+"llegada = " + llegada+"Celular = " + celular+"numero de hab = " + numerohabitacion );
+    }
     
 }
+

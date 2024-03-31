@@ -4,19 +4,30 @@
  */
 package Ventanas;
 
-/**
- *
- * @author Jose
- */
+import Clases.Global;
+import EDD.Lista2;
+import EDD.NodoLista2;
+import Clases.Cliente;
+import java.awt.Color;
+import Clases.Global;
+import EDD.Hashtable;
+import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 public class V5Historial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form V1
-     */
+    DefaultTableModel mt = new DefaultTableModel();
+    
     public V5Historial() {
         setTitle("Hotel Ávila");
         setResizable(false);
         initComponents();
+        Color color = new Color(0,169,105);
+        String ids[] = {"Nombre", "Apellido","Correo", "Genero",  "Llegada", "Numero de Habitacion" };
+        mt.setColumnIdentifiers(ids);
+        jTable1.setModel(mt);
+        jTable1.setBackground(color);
     }
 
     /**
@@ -31,6 +42,12 @@ public class V5Historial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        panelRound1 = new Clases.PanelRound();
+        jLabel4 = new javax.swing.JLabel();
+        buscar = new javax.swing.JButton();
+        numeroDeHabitacion = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,12 +70,61 @@ public class V5Historial extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(253, 250, 249));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/6_1.png"))); // NOI18N
+        panelRound1.setBackground(new java.awt.Color(0, 169, 105));
+        panelRound1.setRoundBottomLeft(10);
+        panelRound1.setRoundBottomRight(10);
+        panelRound1.setRoundTopLeft(10);
+        panelRound1.setRoundTopRight(10);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Numero de Habitacion");
+        panelRound1.add(jLabel4);
+
+        jPanel2.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 250, -1));
+
+        buscar.setBackground(new java.awt.Color(0, 169, 105));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 130, 80, -1));
+
+        numeroDeHabitacion.setBackground(new java.awt.Color(0, 169, 105));
+        numeroDeHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        numeroDeHabitacion.setBorder(null);
+        numeroDeHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroDeHabitacionActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numeroDeHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 80, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 470, 140));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hist.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
@@ -66,6 +132,25 @@ public class V5Historial extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
+
+    private void numeroDeHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroDeHabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroDeHabitacionActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        String num = numeroDeHabitacion.getText();
+        int numero = Integer.parseInt(num);
+        
+        Lista2 lista = Global.getArbollistas().Bucsarhistorial(numero, Global.getArbollistas().getRoot()); // lista con objetos clientes de la habitacion ClienteHistorico
+        NodoLista2 cliente = lista.getHead();
+        while ( cliente != null){
+            mt.addRow(new Object[] {cliente.getElement().getNombre(), cliente.getElement().getApellido(),cliente.getElement().getCorreo(),cliente.getElement().getGenero(),   cliente.getElement().getLlegada(),cliente.getElement().getNumerohabitacion()});
+            cliente = cliente.getSiguiente();
+        }
+        
+        
+        
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,9 +251,15 @@ public class V5Historial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField numeroDeHabitacion;
+    private Clases.PanelRound panelRound1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,10 +2,10 @@ package Clases;
 
 public class Habitacion {
   private int numero;
-  private int piso;
+  private String piso;
   private String tipo;
 
-    public Habitacion(int numero, int piso, String tipo) {
+    public Habitacion(int numero, String piso, String tipo) {
         this.numero = numero;
         this.piso = piso;
         this.tipo = tipo;
@@ -19,11 +19,11 @@ public class Habitacion {
         this.numero = numero;
     }
 
-    public int getPiso() {
+    public String getPiso() {
         return piso;
     }
 
-    public void setPiso(int piso) {
+    public void setPiso(String piso) {
         this.piso = piso;
     }
 
@@ -34,5 +34,6 @@ public class Habitacion {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-  
+
+    
 }
