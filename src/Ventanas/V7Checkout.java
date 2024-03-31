@@ -4,10 +4,8 @@
  */
 package Ventanas;
 
-/**
- *
- * @author Jose
- */
+import Clases.Global;
+import javax.swing.JOptionPane;
 public class V7Checkout extends javax.swing.JFrame {
 
     /**
@@ -108,6 +106,11 @@ public class V7Checkout extends javax.swing.JFrame {
         buscar.setBackground(new java.awt.Color(0, 169, 105));
         buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/8.png"))); // NOI18N
@@ -116,6 +119,7 @@ public class V7Checkout extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
@@ -131,6 +135,18 @@ public class V7Checkout extends javax.swing.JFrame {
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apellidoActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        String nom = nombre.getText();
+        String ape = apellido.getText();
+        try{
+        Global.Checkout(nom, ape); // Toma el cliente Cliente y lo mueve a Cliente Historico, Liberando la habitacion.
+        JOptionPane.showMessageDialog(this, "El cliente:" +nom + " " + ape + "\nHa salido del hotel exitosamente");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error con los datos ingresados\n" + e);
+        }
+        
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments

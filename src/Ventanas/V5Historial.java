@@ -4,19 +4,30 @@
  */
 package Ventanas;
 
-/**
- *
- * @author Jose
- */
+import Clases.Global;
+import EDD.Lista2;
+import EDD.NodoLista2;
+import Clases.Cliente;
+import java.awt.Color;
+import Clases.Global;
+import EDD.Hashtable;
+import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 public class V5Historial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form V1
-     */
+    DefaultTableModel mt = new DefaultTableModel();
+    
     public V5Historial() {
         setTitle("Hotel Ávila");
         setResizable(false);
         initComponents();
+        Color color = new Color(0,169,105);
+        String ids[] = {"Nombre", "Apellido","Correo", "Genero",  "Llegada", "Numero de Habitacion" };
+        mt.setColumnIdentifiers(ids);
+        jTable1.setModel(mt);
+        jTable1.setBackground(color);
     }
 
     /**
@@ -75,6 +86,11 @@ public class V5Historial extends javax.swing.JFrame {
         buscar.setBackground(new java.awt.Color(0, 169, 105));
         buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 130, 80, -1));
 
         numeroDeHabitacion.setBackground(new java.awt.Color(0, 169, 105));
@@ -89,18 +105,18 @@ public class V5Historial extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 450, 140));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 470, 140));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hist.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -108,6 +124,7 @@ public class V5Historial extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
@@ -119,6 +136,21 @@ public class V5Historial extends javax.swing.JFrame {
     private void numeroDeHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroDeHabitacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroDeHabitacionActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        String num = numeroDeHabitacion.getText();
+        int numero = Integer.parseInt(num);
+        
+        Lista2 lista = Global.getArbollistas().Bucsarhistorial(numero, Global.getArbollistas().getRoot()); // lista con objetos clientes de la habitacion ClienteHistorico
+        NodoLista2 cliente = lista.getHead();
+        while ( cliente != null){
+            mt.addRow(new Object[] {cliente.getElement().getNombre(), cliente.getElement().getApellido(),cliente.getElement().getCorreo(),cliente.getElement().getGenero(),   cliente.getElement().getLlegada(),cliente.getElement().getNumerohabitacion()});
+            cliente = cliente.getSiguiente();
+        }
+        
+        
+        
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments

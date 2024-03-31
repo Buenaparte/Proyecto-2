@@ -4,19 +4,27 @@
  */
 package Ventanas;
 
-/**
- *
- * @author Jose
- */
+import Clases.Global;
+import EDD.Nodo;
+import Clases.ClienteReservas;
+import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 public class V4Busqueda extends javax.swing.JFrame {
 
-    /**
-     * Creates new form V1
-     */
+    DefaultTableModel mt = new DefaultTableModel();
+
     public V4Busqueda() {
         setTitle("Hotel Ávila");
         setResizable(false);
         initComponents();
+        Color color = new Color(0,169,105);
+        String ids[] = {"Cedula","Nombre", "Apellido","Correo", "Genero", "Celular", "Tipo de Habitacion", "Llegada", "Salida" };
+        mt.setColumnIdentifiers(ids);
+        jTable1.setModel(mt);
+        jTable1.setBackground(color);
     }
 
     /**
@@ -61,13 +69,13 @@ public class V4Busqueda extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -90,6 +98,11 @@ public class V4Busqueda extends javax.swing.JFrame {
         buscar.setBackground(new java.awt.Color(0, 169, 105));
         buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, -1, -1));
 
         cedula.setBackground(new java.awt.Color(0, 169, 105));
@@ -108,17 +121,45 @@ public class V4Busqueda extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         V2Menu ventana = new V2Menu();
         ventana.setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_volverActionPerformed
 
     private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cedulaActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        ClienteReservas clienteRerservas = null;
+        String cedula = this.cedula.getText();
+        System.out.println(cedula);
+        int cedula2 = Global.convertirCedula(cedula);
+        System.out.println(cedula2);
+        Global.getArbol().searchCedula(cedula2, Global.getArbol().getRoot());
+        
+        if ( Global.getArbol().getBuscado() == null){
+            JOptionPane.showMessageDialog(this, "No existe un cliente registrado con ese nombre y apellido");
+        }else{
+        System.out.println();
+        clienteRerservas = Global.getArbol().getBuscado().getElement(); //clienteReserva
+        Global.getArbol().setBuscado(null);
+        try{
+            
+            mt.addRow(new Object[] {clienteRerservas.getCedula(),clienteRerservas.getNombre(), clienteRerservas.getApellido(), clienteRerservas.getCorreo(), clienteRerservas.getGenero(),   clienteRerservas.getCelular(),clienteRerservas.getTipohabitacion(), clienteRerservas.getLlegada(),clienteRerservas.getSalida()});
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "No existe un cliente registrado con ese nombre y apellido");
+        }
+        }
+       
+        
+        
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments

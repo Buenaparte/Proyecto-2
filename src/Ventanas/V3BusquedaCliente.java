@@ -4,9 +4,14 @@
  */
 package Ventanas;
 
+import Clases.Cliente;
 import java.awt.Color;
 import Clases.Global;
+import EDD.Hashtable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 public class V3BusquedaCliente extends javax.swing.JFrame {
 
     DefaultTableModel mt = new DefaultTableModel();
@@ -15,9 +20,11 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         initComponents();
         setTitle("Hotel Ávila");
         setResizable(false);
+        Color color = new Color(0,169,105);
         String ids[] = {"Nombre", "Apellido", "Genero", "Correo", "Celular", "Numero de Habitacion", "Llegada" };
         mt.setColumnIdentifiers(ids);
         jTable1.setModel(mt);
+        jTable1.setBackground(color);
         
     }
 
@@ -109,7 +116,7 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 440, 50));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 470, 50));
 
         apellido.setBackground(new java.awt.Color(0, 169, 105));
         apellido.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,6 +130,11 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         buscar.setBackground(new java.awt.Color(0, 169, 105));
         buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4_1.png"))); // NOI18N
@@ -131,6 +143,7 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -146,6 +159,36 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apellidoActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        
+        String nombre = this.nombre.getText();
+        String apellido = this.apellido.getText();  
+        System.out.println("apellido = " + apellido);
+        System.out.println("nombre = " + nombre);
+        
+        
+        Hashtable hash = Global.getClientesarray();
+        int index = hash.Crearindex(nombre, apellido);
+        System.out.println(index);
+        Cliente cliente = hash.getArray()[index];
+        if (cliente.getNombre().equals(nombre)){
+        try{
+            mt.addRow(new Object[] {cliente.getNombre(), cliente.getApellido(),cliente.getGenero(), cliente.getCorreo(),  cliente.getCelular(),cliente.getNumerohabitacion(), cliente.getLlegada()});
+} catch(Exception e){
+    JOptionPane.showMessageDialog(this, "No existe un cliente registrado con ese nombre y apellido");
+        }
+        }else{
+            index = hash.Crearindex2(nombre, apellido);
+            cliente = hash.getArray()[index];
+            System.out.println(index);
+            try{
+                mt.addRow(new Object[] {cliente.getNombre(), cliente.getApellido(),cliente.getGenero(), cliente.getCorreo(),  cliente.getCelular(),cliente.getNumerohabitacion(), cliente.getLlegada()});
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(this, "No existe un cliente registrado con ese nombre y apellido");
+        }
+        }
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments

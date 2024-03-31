@@ -32,7 +32,10 @@ public class Hashtable {
           if (getArray()[index] == null){
            getArray()[index] = cliente;   
           }else{
-             System.out.println("se repitio");   
+              
+             System.out.println("se repitio"); 
+              index = Crearindex2(cliente.getNombre(), cliente.getApellido());
+              getArray()[index] = cliente; 
           }
          }             
          
@@ -50,6 +53,22 @@ public class Hashtable {
           apellidoh += b;
          }
          index = nombreh + apellidoh;
+         return index;
+     }
+      public int Crearindex2(String nombre, String apellido){
+         int nombreh = 0;
+         int apellidoh = 0;
+         int index = 0;
+         for (int i = 0; i < nombre.length(); i++) {
+          int a = nombre.charAt(i);
+          nombreh += a;
+         }
+         for (int i = 0; i < apellido.length(); i++) {
+          int b = apellido.charAt(i);
+          apellidoh += b;
+         }
+         index = nombreh + apellidoh;
+         index *=3;
          return index;
      } 
     

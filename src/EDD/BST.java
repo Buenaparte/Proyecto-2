@@ -21,6 +21,70 @@ public class BST {
     public void setRoot(Nodo root) {
         this.root = root;
     }
+    
+    public void deleteNodo(ClienteReservas element, Nodo pointer, Nodo pointerPrevious) {
+        if (isEmpty()) {
+            System.out.println("El arbol esta vacio");
+        } else {
+            if (element.getCedula() < pointer.getElement().getCedula()) {
+                deleteNodo(element, pointer.getLeftSon(), pointer);
+            } else if (element.getCedula() > pointer.getElement().getCedula()) {
+                deleteNodo(element, pointer.getRightSon(), pointer);
+            } else {
+                if (pointer.isLeaf()) {
+                    // Cuando el nodo a eliminar es una hoja
+                    if (pointerPrevious == null) {
+                        setRoot(null);
+                    } else {
+                        if (element.getCedula() < pointerPrevious.getElement().getCedula()) {
+                            pointerPrevious.setLeftSon(null);
+                        } else {
+                            pointerPrevious.setRightSon(null);
+                        }
+                    }
+                } else if (pointer.hasOnlyLeftSon()) {
+                    // Cuando el nodo a eliminar tiene solo un hijo izq
+                    if (pointerPrevious == null) {
+                        setRoot(pointer.getLeftSon());
+                    } else {
+                        if (element.getCedula() < pointerPrevious.getElement().getCedula()) {
+                            pointerPrevious.setLeftSon(pointer.getLeftSon());
+                        } else {
+                            pointerPrevious.setRightSon(pointer.getLeftSon());
+                        }
+                    }
+                }  else if (pointer.hasOnlyRightSon()) {
+                    // Cuando el nodo a eliminar tiene solo un hijo der
+                    if (pointerPrevious == null) {
+                        setRoot(pointer.getRightSon());
+                    } else {
+                        if (element.getCedula() < pointerPrevious.getElement().getCedula()) {
+                            pointerPrevious.setLeftSon(pointer.getRightSon());
+                        } else {
+                            pointerPrevious.setRightSon(pointer.getRightSon());
+                        }
+                    }
+                } else {
+                    // Cuando el nodo a eliminar tiene dos hijos
+                    boolean hasRightSons = validateLeftSon(pointer.getLeftSon());
+                    Nodo temp = (hasRightSons) ? searchNodoToReplace(pointer.getLeftSon()) : pointer.getLeftSon();
+                    if (pointerPrevious == null) {
+                        temp.setLeftSon(getRoot().getLeftSon());
+                        temp.setRightSon(getRoot().getRightSon());
+                        setRoot(temp);
+                    } else {
+                        temp.setLeftSon(pointer.getLeftSon());
+                        temp.setRightSon(pointer.getRightSon());
+                        if (element.getCedula() < pointerPrevious.getElement().getCedula()) {
+                            pointerPrevious.setLeftSon(temp);
+                        } else {
+                            pointerPrevious.setRightSon(temp);
+                        }
+                    }
+                }
+            }
+        }
+    }
         
     public void insertCedula(ClienteReservas element, Nodo pointer) {
         Nodo nodo = new Nodo(element);
@@ -91,12 +155,15 @@ public class BST {
     }
     
     public void searchCedula(int element, Nodo raiz){
+        if(this.getRoot().getElement().getCedula() == element){
+           this.setBuscado(this.getRoot());
+        }
         if( raiz.getLeftSon() != null && raiz.getLeftSon().getElement().getCedula() == element){
          this.setBuscado(raiz.getLeftSon());
      } else if( raiz.getRightSon() != null && raiz.getRightSon().getElement().getCedula() == element){
          this.setBuscado(raiz.getRightSon());
      }else if (raiz != null){
-          System.out.println(raiz.getElement().getCedula());
+          
           if(raiz.getLeftSon() != null){
            searchCedula(element,raiz.getLeftSon());    
           }
