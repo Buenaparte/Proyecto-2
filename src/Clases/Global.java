@@ -152,7 +152,7 @@ public class Global {
        }
     Habitacion h = Global.getListahabitaciones().recorrer(b);
     Cliente cd = new Cliente(h.getNumero(),cl.getNombre(),cl.getApellido(),cl.getCorreo(),cl.getGenero(),cl.getCelular(),fechaComoCadena);
-     cd.mostrar();
+     //cd.mostrar();
     Global.getClientesarray().Insert(cd);
    }
    
@@ -162,9 +162,9 @@ public class Global {
      Global.getClientesarray().getArray()[i] = null;
      Global.getHabitaciones()[cl.getNumerohabitacion()] = 0;
      ClienteHistorico cd = new ClienteHistorico(0,cl.getNombre(),cl.getApellido(),cl.getCorreo(),cl.getGenero(),cl.getLlegada(),cl.getNumerohabitacion());
-       System.out.println(cd.getNumerohabitacion());
+       //System.out.println(cd.getNumerohabitacion());
      Global.getArbollistas().Insertarclientes(cd, Global.getArbollistas().getRoot());
-     Global.getArbollistas().Bucsarhistorial(cd.getNumerohabitacion(), Global.getArbollistas().getRoot()).print();
+     //Global.getArbollistas().Bucsarhistorial(cd.getNumerohabitacion(), Global.getArbollistas().getRoot()).print();
    }
    
    //public ClienteReservas busquedacedula(int cedula){
@@ -174,7 +174,7 @@ public class Global {
    
    public void busquedacliente(String nombre, String apellido){
        int index = getClientesarray().Crearindex(nombre, apellido);
-       System.out.println(getClientesarray().getArray()[index].getNombre());
+       //System.out.println(getClientesarray().getArray()[index].getNombre());
    } 
    
     public static BST reservations(){
@@ -219,7 +219,7 @@ public class Global {
                 }
                 habprev = values[0];
                 Cliente cliente = new Cliente(Integer.parseInt(values[0]),values[1],values[2],values[3],values[4],values[5],values[6]);
-                cliente.mostrar();
+                //cliente.mostrar();
                 array[cliente.getNumerohabitacion()] = 1;
                 ha.Insert(cliente);   
             }
@@ -258,7 +258,7 @@ public class Global {
             if (count > 0){
                 String[] values = line.split(";");
                 ClienteHistorico cliente = new ClienteHistorico(convertirCedula(values[0]),values[1],values[2],values[3],values[4],values[5],Integer.parseInt(values[6]));
-                System.out.println(cliente);
+                //System.out.println(cliente);
                 bst2.Insertarclientes(cliente, bst2.getRoot());
                 
             }
