@@ -162,26 +162,28 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         
-        String nombre = this.nombre.getText();
-        String apellido = this.apellido.getText();  
-        System.out.println("apellido = " + apellido);
-        System.out.println("nombre = " + nombre);
+        //String nombre = this.nombre.getText();
+        //String apellido = this.apellido.getText();  
+        //System.out.println("apellido = " + apellido);
+        //System.out.println("nombre = " + nombre);
         
         
         Hashtable hash = Global.getClientesarray();
-        int index = hash.Crearindex(nombre, apellido);
-        System.out.println(index);
+        String name = nombre.getText();
+        String ape = apellido.getText();
+        int index = hash.Crearindex(name, ape);
+        //System.out.println(index);
         Cliente cliente = hash.getArray()[index];
-        if (cliente.getNombre().equals(nombre)){
+        if (cliente.getNombre().equals(name)){
         try{
             mt.addRow(new Object[] {cliente.getNombre(), cliente.getApellido(),cliente.getGenero(), cliente.getCorreo(),  cliente.getCelular(),cliente.getNumerohabitacion(), cliente.getLlegada()});
 } catch(Exception e){
     JOptionPane.showMessageDialog(this, "No existe un cliente registrado con ese nombre y apellido");
         }
         }else{
-            index = hash.Crearindex2(nombre, apellido);
+            index = hash.Crearindex2(name, ape);
             cliente = hash.getArray()[index];
-            System.out.println(index);
+            //System.out.println(index);
             try{
                 mt.addRow(new Object[] {cliente.getNombre(), cliente.getApellido(),cliente.getGenero(), cliente.getCorreo(),  cliente.getCelular(),cliente.getNumerohabitacion(), cliente.getLlegada()});
             } catch(Exception e){

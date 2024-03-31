@@ -33,7 +33,6 @@ public class Hashtable {
            getArray()[index] = cliente;   
           }else{
               
-             System.out.println("se repitio"); 
               index = Crearindex2(cliente.getNombre(), cliente.getApellido());
               getArray()[index] = cliente; 
           }

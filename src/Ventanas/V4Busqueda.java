@@ -138,15 +138,15 @@ public class V4Busqueda extends javax.swing.JFrame {
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         ClienteReservas clienteRerservas = null;
         String cedula = this.cedula.getText();
-        System.out.println(cedula);
+        //System.out.println(cedula);
         int cedula2 = Global.convertirCedula(cedula);
-        System.out.println(cedula2);
+        //System.out.println(cedula2);
         Global.getArbol().searchCedula(cedula2, Global.getArbol().getRoot());
         
         if ( Global.getArbol().getBuscado() == null){
             JOptionPane.showMessageDialog(this, "No existe un cliente registrado con ese nombre y apellido");
         }else{
-        System.out.println();
+        //System.out.println();
         clienteRerservas = Global.getArbol().getBuscado().getElement(); //clienteReserva
         Global.getArbol().setBuscado(null);
         try{
