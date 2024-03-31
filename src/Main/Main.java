@@ -2,15 +2,9 @@
 package Main;
 
 
-//relative paths
-//"./src/CSV/Booking_hotel-Reservas.csv"
-//"./src/CSV/Booking_hotel-Historico.csv"
-//"./src/CSV/Booking_hotel-Habitaciones.csv"
-
 
 import Clases.Global;
 import Clases.ClienteReservas;
-import Funciones.FuncionExcel;
 import Ventanas.V1Inicio;
 import org.apache.poi.hemf.record.emfplus.HemfPlusHeader;
 

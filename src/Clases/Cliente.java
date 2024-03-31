@@ -70,5 +70,8 @@ public class Cliente {
     public void setNumerohabitacion(int numerohabitacion) {
         this.numerohabitacion = numerohabitacion;
     }
+    public void mostrar(){
+        System.out.println("Nombre = " + Nombre+"Apellido = " + Apellido+ "Genero = " + genero+"Correo = " + correo+"llegada = " + llegada+"Celular = " + celular+"numero de hab = " + numerohabitacion );
+    }
     
 }

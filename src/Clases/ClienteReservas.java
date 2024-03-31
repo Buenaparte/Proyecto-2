@@ -87,6 +87,8 @@ public class ClienteReservas {
     public void setSalida(String salida) {
         this.salida = salida;
     }
-    
+    public void mostrar(){
+        System.out.println("Nombre = " + Nombre+"Apellido = " + Apellido+ "Genero = " + genero+"Correo = " + correo+"tipo de hab = " + tipohabitacion+"llegada = " + llegada+"salida = " + salida+"Celular = " + celular );
+    }
    
 }

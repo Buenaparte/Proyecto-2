@@ -1,4 +1,5 @@
 package EDD;
+import Clases.ClienteHistorico;
 
 public class BST2 {
     private NodoBst2 root;
@@ -15,12 +16,12 @@ public class BST2 {
         this.root = root;
     }
    //revisar codigo algo esta raro     
-    public void insertLista(Lista element, NodoBst2 pointer) {
+    public void insertLista(Lista2 element, NodoBst2 pointer) {
         NodoBst2 nodo = new NodoBst2(element);
         if (isEmpty()) {
             setRoot(nodo);
         } else {
-            if(element == pointer.getElement()) {
+            if(element.getKey() == pointer.getElement().getKey()) {
                 System.out.println("El elemento no es valido");
                 return;
             } else if (element.getKey() < pointer.getElement().getKey()) {
@@ -39,7 +40,7 @@ public class BST2 {
         }
     }
     
-    public void insertSimple(Lista element) {
+    public void insertSimple(Lista2 element) {
         NodoBst2 nodo = new NodoBst2(element);
         if (isEmpty()) {
             setRoot(nodo);
@@ -83,21 +84,42 @@ public class BST2 {
         return nodo;
     }
       
-       public Lista searchPrevias(int element, NodoBst2 raiz){
-     if( raiz != null && element != raiz.getElement().getKey()){
+       public void searchPrevias(ClienteHistorico element, NodoBst2 raiz){
+     if( raiz != null){
+      if(element.getNumerohabitacion() != raiz.getElement().getKey()){
       searchPrevias(element,raiz.getLeftSon());
       searchPrevias(element,raiz.getRightSon());
-     }   
-     return raiz.getElement();
+      }
+     }
+     raiz.getElement().InsertFinal(element);
     }
+       
+       
+     public void Insertarclientes(ClienteHistorico element, NodoBst2 raiz){
+         System.out.println("la raiz original: "+ raiz.getElement().getKey());
+     if( element.getNumerohabitacion() != raiz.getElement().getKey() && raiz != null){
+          Insertarclientes(element,raiz.getLeftSon());
+         Insertarclientes(element,raiz.getRightSon());
+     }
+         System.out.println("se acabo ciclo");
+     raiz.getElement().InsertFinal(element);
+    }   
        
         public void preOrden(NodoBst2 raiz) {
         if (raiz != null) {
             System.out.println("[ " + raiz.getElement() + " ]");
-            preOrden(raiz.getLeftSon());
+             preOrden(raiz.getLeftSon());
             preOrden(raiz.getRightSon());
         }
     }
+        
+            public void preOrden2(NodoBst2 raiz) {
+        if (raiz != null) {
+           System.out.println("[ " + raiz.getElement().getKey() + " ]");
+            preOrden2(raiz.getLeftSon());
+            preOrden2(raiz.getRightSon());
+        }
+    }    
     
     public void postOrden(NodoBst2 raiz) {
         if (raiz != null) {

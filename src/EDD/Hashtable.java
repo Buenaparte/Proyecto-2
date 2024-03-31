@@ -38,7 +38,7 @@ public class Hashtable {
           if (getArray()[index] == null){
            getArray()[index] = cliente;   
           }else{
-             System.out.println("se repitio");   
+              System.out.println("Se Repitio");
           }
          }             
         } 

@@ -74,7 +74,7 @@ public class FuncionExcel {
             String dateSalida = ReadExcel("reservas", i, 8);
             ClienteReservas cliente = new ClienteReservas(ci,nombre,apellido,correo,genero,tipohab,tlf,dateLlegada,dateSalida);
 
-            listaReservas.InsertFinal(cliente);
+            //listaReservas.InsertFinal(cliente);
             System.out.println(i);
         }
         listaReservas.print();
@@ -107,7 +107,7 @@ public class FuncionExcel {
                         if( !ci.equals(" ") &&!name.equals(" ")&& !lname.equals(" ")&& !correo.equals(" ")&& !genero.equals(" ")&& !tipohab.equals(" ")&& !tlf.equals(" ")&& !datellegada.equals(" ")&& !datesalida.equals(" ")){
                             int intCI = Integer.parseInt(ci);
                             ClienteReservas nuevoCliente = new ClienteReservas(intCI,name,lname,correo,genero,tipohab,tlf,datellegada,datesalida);
-                            listaReservas.InsertFinal(nuevoCliente);
+                            //listaReservas.InsertFinal(nuevoCliente);
                         }
                     }                     
             }                 listaReservas.print();
