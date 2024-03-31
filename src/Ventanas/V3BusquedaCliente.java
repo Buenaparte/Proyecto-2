@@ -6,19 +6,19 @@ package Ventanas;
 
 import java.awt.Color;
 import Clases.Global;
-/**
- *
- * @author Jose
- */
+import javax.swing.table.DefaultTableModel;
 public class V3BusquedaCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form V1
-     */
+    DefaultTableModel mt = new DefaultTableModel();
+            
     public V3BusquedaCliente() {
         initComponents();
         setTitle("Hotel Ávila");
         setResizable(false);
+        String ids[] = {"Nombre", "Apellido", "Genero", "Correo", "Celular", "Numero de Habitacion", "Llegada" };
+        mt.setColumnIdentifiers(ids);
+        jTable1.setModel(mt);
+        
     }
 
     /**
@@ -98,13 +98,13 @@ public class V3BusquedaCliente extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

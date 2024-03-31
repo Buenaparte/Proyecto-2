@@ -120,15 +120,15 @@ public class V1_2Archivos extends javax.swing.JFrame {
         Global.estado();
         Global.setArbol(Global.reservations());
        
-        //Global.getArbollistas().Bucsarhistorial(67, Global.getArbollistas().getRoot()).print();
+        //Global.getArbollistas().Bucsarhistorial(67, Global.getArbollistas().getRoot()).print(); // historico de habitacionn
         
-        //int index = Global.getClientesarray().Crearindex("Chrissy", "Abbis");
+        //int index = Global.getClientesarray().Crearindex("Chrissy", "Abbis"); /// estado
         //System.out.println(index);
         //System.out.println(Global.getClientesarray().getArray()[1222]);
         //System.out.println(Global.getClientesarray().getArray()[index].getNumerohabitacion());
          
        //Global.getArbol().searchCedula(        18272608, Global.getArbol().getRoot());
-        //System.out.println(Global.getArbol().getBuscado().getElement().getApellido());
+        //System.out.println(Global.getArbol().getBuscado().getElement().getApellido());  /// buscar cliente con cedula
         
         V2Menu ventana = new V2Menu();
         ventana.setVisible(true);

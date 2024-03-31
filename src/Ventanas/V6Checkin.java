@@ -30,6 +30,10 @@ public class V6Checkin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
+        panelRound1 = new Clases.PanelRound();
+        jLabel4 = new javax.swing.JLabel();
+        cedula = new javax.swing.JTextField();
+        buscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -50,6 +54,34 @@ public class V6Checkin extends javax.swing.JFrame {
         });
         getContentPane().add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
 
+        panelRound1.setBackground(new java.awt.Color(0, 169, 105));
+        panelRound1.setRoundBottomLeft(10);
+        panelRound1.setRoundBottomRight(10);
+        panelRound1.setRoundTopLeft(10);
+        panelRound1.setRoundTopRight(10);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Cedula");
+        panelRound1.add(jLabel4);
+
+        getContentPane().add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 130, -1));
+
+        cedula.setBackground(new java.awt.Color(0, 169, 105));
+        cedula.setForeground(new java.awt.Color(255, 255, 255));
+        cedula.setBorder(null);
+        cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cedulaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 80, 30));
+
+        buscar.setBackground(new java.awt.Color(0, 169, 105));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("Buscar");
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, -1, -1));
+
         jPanel2.setBackground(new java.awt.Color(253, 250, 249));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -66,6 +98,10 @@ public class V6Checkin extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
+
+    private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,9 +266,13 @@ public class V6Checkin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar;
+    private javax.swing.JTextField cedula;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private Clases.PanelRound panelRound1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

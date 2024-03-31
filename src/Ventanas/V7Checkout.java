@@ -31,6 +31,13 @@ public class V7Checkout extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        panelRound1 = new Clases.PanelRound();
+        jLabel4 = new javax.swing.JLabel();
+        panelRound2 = new Clases.PanelRound();
+        jLabel5 = new javax.swing.JLabel();
+        apellido = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
+        buscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,6 +60,56 @@ public class V7Checkout extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(253, 250, 249));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelRound1.setBackground(new java.awt.Color(0, 169, 105));
+        panelRound1.setRoundBottomLeft(10);
+        panelRound1.setRoundBottomRight(10);
+        panelRound1.setRoundTopLeft(10);
+        panelRound1.setRoundTopRight(10);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Nombre");
+        panelRound1.add(jLabel4);
+
+        jPanel2.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 130, -1));
+
+        panelRound2.setBackground(new java.awt.Color(0, 169, 105));
+        panelRound2.setRoundBottomLeft(10);
+        panelRound2.setRoundBottomRight(10);
+        panelRound2.setRoundTopLeft(10);
+        panelRound2.setRoundTopRight(10);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Apellido");
+        panelRound2.add(jLabel5);
+
+        jPanel2.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 130, -1));
+
+        apellido.setBackground(new java.awt.Color(0, 169, 105));
+        apellido.setForeground(new java.awt.Color(255, 255, 255));
+        apellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 80, 30));
+
+        nombre.setBackground(new java.awt.Color(0, 169, 105));
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
+        nombre.setBorder(null);
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+        jPanel2.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 80, 30));
+
+        buscar.setBackground(new java.awt.Color(0, 169, 105));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("Buscar");
+        jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/8.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -66,6 +123,14 @@ public class V7Checkout extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,9 +294,16 @@ public class V7Checkout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField apellido;
+    private javax.swing.JButton buscar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField nombre;
+    private Clases.PanelRound panelRound1;
+    private Clases.PanelRound panelRound2;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
